@@ -3,7 +3,5 @@
 *.iml
 .idea/*
 
-target/
+target/*
 build/
-
-.class
