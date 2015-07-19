@@ -1,10 +1,10 @@
-package com.neerpoints.functional_tests.tests.clients;
+package com.neerpoints.functional_tests.clients;
 
 import com.google.gson.Gson;
 import com.neerpoints.functional_tests.model.ClientRegistration;
 import com.neerpoints.functional_tests.model.CompanyRegistration;
 import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.tests.RestApiTest;
+import com.neerpoints.functional_tests.RestApiTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +17,7 @@ public class ClientRegistrationTest extends RestApiTest {
         final ClientRegistration clientRegistration = new ClientRegistration();
         clientRegistration.setCompanyId(companyId);
         clientRegistration.setPhone("6141112233");
-        ServiceResult response = getPostResponse(clientRegistration, "clients");
+        ServiceResult response = getServiceResult(HttpMethod.POST, CallType.AUTH, "clients", clientRegistration);
         assertNotNull(response);
         assertEquals(true, response.isSuccess());
         assertNotNull(response.getMessage());
@@ -30,7 +30,7 @@ public class ClientRegistrationTest extends RestApiTest {
         companyRegistration.setEmail("email@test.com");
         companyRegistration.setPassword("Pa$$w0rd");
         companyRegistration.setUrlImageLogo("images/logo.png");
-        ServiceResult response = getPostResponse(companyRegistration, "companies");
+        ServiceResult response = getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", companyRegistration);
         assertNotNull(response);
         assertEquals(true, response.isSuccess());
         assertNotNull(response.getMessage());

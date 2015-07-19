@@ -1,15 +1,15 @@
-package com.neerpoints.functional_tests.tests.client_users;
+package com.neerpoints.functional_tests.client_users;
 
+import com.neerpoints.functional_tests.RestApiTest;
 import com.neerpoints.functional_tests.model.ClientRegistration;
 import com.neerpoints.functional_tests.model.ClientUserLogin;
 import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.tests.RestApiTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ClientUserRegistrationTest extends RestApiTest {
+public class ClientUserLoginTest extends RestApiTest {
     @Test
     public void testRegisterClient() {
         final ClientUserLogin clientUserLogin = new ClientUserLogin();
@@ -23,7 +23,7 @@ public class ClientUserRegistrationTest extends RestApiTest {
         clientUserLogin.setKey("qwerty");
         clientUserLogin.setEmail("a@a.com");
         clientUserLogin.setPassword("password");
-        ServiceResult responseFromLogin = getPostResponse(clientUserLogin, "client_users/login");
+        ServiceResult responseFromLogin = getServiceResult(HttpMethod.POST, CallType.AUTH, "client_users/login", clientUserLogin);
         assertNotNull(responseFromLogin);
         assertEquals(true, responseFromLogin.isSuccess());
         assertNotNull(responseFromLogin.getMessage());
@@ -32,6 +32,6 @@ public class ClientUserRegistrationTest extends RestApiTest {
     private ServiceResult registerClientUser(String phone) {
         final ClientRegistration clientRegistration = new ClientRegistration();
         clientRegistration.setPhone(phone);
-        return getPostResponse(clientRegistration, "companies");
+        return getServiceResult(HttpMethod.POST, CallType.AUTH, "company/register", clientRegistration);
     }
 }

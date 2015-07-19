@@ -1,4 +1,4 @@
-package com.neerpoints.functional_tests.tests.companies;
+package com.neerpoints.functional_tests.companies;
 
 import java.util.List;
 import com.google.gson.Gson;
@@ -6,7 +6,7 @@ import com.neerpoints.functional_tests.model.ClientRegistration;
 import com.neerpoints.functional_tests.model.Company;
 import com.neerpoints.functional_tests.model.CompanyRegistration;
 import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.tests.RestApiTest;
+import com.neerpoints.functional_tests.RestApiTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +19,7 @@ public class GetCompaniesByClientIdTest extends RestApiTest {
         registerCompany("name1", "logo1");
         registerCompany("name2", "logo2");
 
-        ServiceResult<List<Company>> serviceResult = getPostResponse(companyId, "clients");
+        ServiceResult<List<Company>> serviceResult = getServiceResult(HttpMethod.POST, CallType.AUTH, "clients", companyId);
         assertNotNull(serviceResult);
         assertEquals(true, serviceResult.isSuccess());
         assertNotNull(serviceResult.getMessage());
@@ -36,7 +36,7 @@ public class GetCompaniesByClientIdTest extends RestApiTest {
         final ClientRegistration clientRegistration = new ClientRegistration();
         clientRegistration.setCompanyId(1);
         clientRegistration.setPhone("1234");
-        ServiceResult serviceResult = getPostResponse(clientRegistration, "companies");
+        ServiceResult serviceResult = getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", clientRegistration);
 
         Gson gson = new Gson();
         CompanyRegistrationResponse companyRegistrationResponse = gson.fromJson(serviceResult.getMessage(), CompanyRegistrationResponse.class);
@@ -50,7 +50,7 @@ public class GetCompaniesByClientIdTest extends RestApiTest {
         companyRegistration.setEmail("a@a.com");
         companyRegistration.setPassword("password");
         companyRegistration.setUrlImageLogo(urlImageLogo);
-        ServiceResult serviceResult = getPostResponse(companyRegistration, "companies");
+        ServiceResult serviceResult = getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", companyRegistration);
         assertNotNull(serviceResult);
         assertEquals(true, serviceResult.isSuccess());
         assertNotNull(serviceResult.getMessage());
@@ -60,7 +60,7 @@ public class GetCompaniesByClientIdTest extends RestApiTest {
         final ClientRegistration clientRegistration = new ClientRegistration();
         clientRegistration.setCompanyId(companyId);
         clientRegistration.setPhone(phone);
-        getPostResponse(clientRegistration, "companies");
+        getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", clientRegistration);
     }
 
     private class CompanyRegistrationResponse {

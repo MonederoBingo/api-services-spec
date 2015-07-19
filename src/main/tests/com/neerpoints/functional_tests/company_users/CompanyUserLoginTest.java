@@ -1,9 +1,9 @@
-package com.neerpoints.functional_tests.tests.company_users;
+package com.neerpoints.functional_tests.company_users;
 
 import com.neerpoints.functional_tests.model.CompanyRegistration;
 import com.neerpoints.functional_tests.model.ServiceResult;
 import com.neerpoints.functional_tests.model.CompanyUserLogin;
-import com.neerpoints.functional_tests.tests.RestApiTest;
+import com.neerpoints.functional_tests.RestApiTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -22,7 +22,7 @@ public class CompanyUserLoginTest extends RestApiTest {
 
         companyUserLogin.setEmail(email);
         companyUserLogin.setPassword(password);
-        ServiceResult responseFromLogin = getPostResponse(companyUserLogin, "company_users/login");
+        ServiceResult responseFromLogin = getServiceResult(HttpMethod.POST, CallType.AUTH, "company_users/login", companyUserLogin);
         assertNotNull(responseFromLogin);
         assertEquals(true, responseFromLogin.isSuccess());
         assertNotNull(responseFromLogin.getMessage());
@@ -35,6 +35,6 @@ public class CompanyUserLoginTest extends RestApiTest {
         companyRegistration.setEmail(email);
         companyRegistration.setPassword(password);
         companyRegistration.setUrlImageLogo("images/logo.png");
-        return getPostResponse(companyRegistration, "companies");
+        return getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", companyRegistration);
     }
 }

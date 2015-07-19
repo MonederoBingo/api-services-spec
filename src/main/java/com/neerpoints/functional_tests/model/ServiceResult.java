@@ -1,6 +1,8 @@
 package com.neerpoints.functional_tests.model;
 
-public class ServiceResult<T> {
+import com.owlike.genson.GenericType;
+
+public class ServiceResult<T> extends GenericType{
     private final boolean success;
     private final String message;
     private T object;
