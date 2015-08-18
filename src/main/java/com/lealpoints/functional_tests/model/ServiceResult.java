@@ -1,18 +1,16 @@
-package com.neerpoints.functional_tests.model;
+package com.lealpoints.functional_tests.model;
 
-import com.owlike.genson.GenericType;
-
-public class ServiceResult<T> extends GenericType{
+public class ServiceResult{
     private final boolean success;
     private final String message;
-    private T object;
+    private String object;
 
     public ServiceResult(boolean success, String message) {
         this.success = success;
         this.message = message;
     }
 
-    public ServiceResult(boolean success, String message, T object) {
+    public ServiceResult(boolean success, String message, String object) {
         this(success, message);
         this.object = object;
     }
@@ -25,7 +23,7 @@ public class ServiceResult<T> extends GenericType{
         return message;
     }
 
-    public T getObject() {
+    public String getObject() {
         return object;
     }
 }

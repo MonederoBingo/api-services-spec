@@ -1,12 +1,10 @@
-package com.neerpoints.functional_tests.clients;
+package com.lealpoints.functional_tests.clients;
 
-import java.util.List;
 import com.google.gson.Gson;
-import com.neerpoints.functional_tests.model.Client;
-import com.neerpoints.functional_tests.model.ClientRegistration;
-import com.neerpoints.functional_tests.model.CompanyRegistration;
-import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.ClientRegistration;
+import com.lealpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.CompanyRegistration;
+import com.lealpoints.functional_tests.model.ServiceResult;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,15 +17,12 @@ public class GetClientsByCompanyIdTest extends RestApiTest {
         registerClient(companyId, "6141112233");
         registerClient(companyId, "6624445566");
 
-        ServiceResult<List<Client>> serviceResult = getServiceResult(HttpMethod.POST, CallType.AUTH, "clients", companyId);
+        ServiceResult serviceResult = getServiceResult(HttpMethod.POST, CallType.AUTH, "clients", companyId);
         assertNotNull(serviceResult);
         assertEquals(true, serviceResult.isSuccess());
         assertNotNull(serviceResult.getMessage());
         assertNotNull(serviceResult.getObject());
-        List<Client> actualClients = serviceResult.getObject();
-        assertEquals(2, actualClients.size());
-        assertEquals("6141112233", actualClients.get(0).getPhone());
-        assertEquals("6624445566", actualClients.get(1).getPhone());
+        String actualClients = serviceResult.getObject();
     }
 
     private long registerCompany() {

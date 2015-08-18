@@ -1,14 +1,15 @@
-package com.neerpoints.functional_tests;
+package com.lealpoints.functional_tests;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import com.neerpoints.functional_tests.model.ServiceResult;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+import com.lealpoints.functional_tests.model.ServiceResult;
 import org.glassfish.jersey.client.ClientConfig;
 import org.junit.Before;
 
@@ -22,8 +23,8 @@ public class RestApiTest {
     }
 
     protected enum CallType {
-        API("http://localhost:9090/api"),
-        AUTH("http://localhost:9090/auth");
+        API("http://test.localhost:9090/api"),
+        AUTH("http://test.localhost:9090/auth");
 
         private final String url;
 
@@ -45,12 +46,15 @@ public class RestApiTest {
         OPTIONS;
     }
 
-
-    protected <T, E> ServiceResult<E> getServiceResult(HttpMethod httpMethod, CallType callType, String path, T object) {
+    protected <T> ServiceResult getServiceResult(HttpMethod httpMethod, CallType callType, String path, T object) {
         Entity<T> entity = Entity.entity(object, MediaType.APPLICATION_JSON_TYPE);
         Response response = getRestResponse(httpMethod, entity, callType, path);
-        GenericType<ServiceResult<E>> genericType = new GenericType<ServiceResult<E>>() {};
-        return response.readEntity(genericType);
+        if (response.getMediaType().getSubtype().equals("json")) {
+            String jsonResponse = response.readEntity(String.class);
+            return new Gson().fromJson(jsonResponse, ServiceResult.class);
+        } else {
+            throw new JsonParseException(response.readEntity(String.class));
+        }
     }
 
     private <T> Response getRestResponse(HttpMethod httpMethod, Entity<T> entity, CallType callType, String path) {

@@ -1,4 +1,4 @@
-package com.neerpoints.functional_tests.model;
+package com.lealpoints.functional_tests.model;
 
 public class Company {
     private long _companyId;

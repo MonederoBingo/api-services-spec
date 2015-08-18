@@ -1,10 +1,10 @@
-package com.neerpoints.functional_tests.clients;
+package com.lealpoints.functional_tests.clients;
 
 import com.google.gson.Gson;
-import com.neerpoints.functional_tests.model.ClientRegistration;
-import com.neerpoints.functional_tests.model.CompanyRegistration;
-import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.ClientRegistration;
+import com.lealpoints.functional_tests.model.CompanyRegistration;
+import com.lealpoints.functional_tests.model.ServiceResult;
+import com.lealpoints.functional_tests.RestApiTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

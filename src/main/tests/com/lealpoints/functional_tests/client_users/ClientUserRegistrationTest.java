@@ -1,15 +1,15 @@
-package com.neerpoints.functional_tests.client_users;
+package com.lealpoints.functional_tests.client_users;
 
-import com.neerpoints.functional_tests.RestApiTest;
-import com.neerpoints.functional_tests.model.ClientRegistration;
-import com.neerpoints.functional_tests.model.ClientUserLogin;
-import com.neerpoints.functional_tests.model.ServiceResult;
+import com.lealpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.ClientRegistration;
+import com.lealpoints.functional_tests.model.ClientUserLogin;
+import com.lealpoints.functional_tests.model.ServiceResult;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ClientUserLoginTest extends RestApiTest {
+public class ClientUserRegistrationTest extends RestApiTest {
     @Test
     public void testRegisterClient() {
         final ClientUserLogin clientUserLogin = new ClientUserLogin();
@@ -32,6 +32,6 @@ public class ClientUserLoginTest extends RestApiTest {
     private ServiceResult registerClientUser(String phone) {
         final ClientRegistration clientRegistration = new ClientRegistration();
         clientRegistration.setPhone(phone);
-        return getServiceResult(HttpMethod.POST, CallType.AUTH, "company/register", clientRegistration);
+        return getServiceResult(HttpMethod.POST, CallType.AUTH, "companies", clientRegistration);
     }
 }

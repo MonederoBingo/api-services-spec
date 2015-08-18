@@ -1,8 +1,8 @@
-package com.neerpoints.functional_tests.companies;
+package com.lealpoints.functional_tests.companies;
 
-import com.neerpoints.functional_tests.model.CompanyRegistration;
-import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.CompanyRegistration;
+import com.lealpoints.functional_tests.model.ServiceResult;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

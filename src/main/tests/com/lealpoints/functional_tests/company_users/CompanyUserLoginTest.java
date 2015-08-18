@@ -1,9 +1,9 @@
-package com.neerpoints.functional_tests.company_users;
+package com.lealpoints.functional_tests.company_users;
 
-import com.neerpoints.functional_tests.model.CompanyRegistration;
-import com.neerpoints.functional_tests.model.ServiceResult;
-import com.neerpoints.functional_tests.model.CompanyUserLogin;
-import com.neerpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.RestApiTest;
+import com.lealpoints.functional_tests.model.CompanyUserLogin;
+import com.lealpoints.functional_tests.model.CompanyRegistration;
+import com.lealpoints.functional_tests.model.ServiceResult;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
