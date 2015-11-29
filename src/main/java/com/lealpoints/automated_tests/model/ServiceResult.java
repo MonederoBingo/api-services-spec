@@ -1,17 +1,13 @@
-package com.lealpoints.functional_tests.model;
+package com.lealpoints.automated_tests.model;
 
-public class ServiceResult{
+public class ServiceResult {
     private final boolean success;
     private final String message;
-    private String object;
-
-    public ServiceResult(boolean success, String message) {
-        this.success = success;
-        this.message = message;
-    }
+    private final String object;
 
     public ServiceResult(boolean success, String message, String object) {
-        this(success, message);
+        this.success = success;
+        this.message = message;
         this.object = object;
     }
 
