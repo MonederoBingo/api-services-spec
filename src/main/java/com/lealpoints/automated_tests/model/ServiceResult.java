@@ -2,12 +2,12 @@ package com.lealpoints.automated_tests.model;
 
 public class ServiceResult {
     private final boolean success;
-    private final String message;
+    private final ServiceMessage serviceMessage;
     private final String object;
 
-    public ServiceResult(boolean success, String message, String object) {
+    public ServiceResult(boolean success, ServiceMessage serviceMessage, String object) {
         this.success = success;
-        this.message = message;
+        this.serviceMessage = serviceMessage;
         this.object = object;
     }
 
@@ -16,7 +16,11 @@ public class ServiceResult {
     }
 
     public String getMessage() {
-        return message;
+        return serviceMessage.getMessage();
+    }
+
+    public String getTranslation(Language language) {
+        return serviceMessage.getTranslation(language);
     }
 
     public String getObject() {
