@@ -1,10 +1,21 @@
 package com.lealpoints.automated_tests.actions.login;
 
+import com.lealpoints.automated_tests.actions.util.ParserUtil;
 import com.lealpoints.automated_tests.api.ApiClient;
 import com.lealpoints.automated_tests.api.HttpMethod;
+import com.lealpoints.automated_tests.model.ServiceResult;
+import org.json.JSONObject;
 
 public class CompanyUserLoginAction {
-    public static String loginCompanyUser(String json) {
-        return ApiClient.getRestResponse(HttpMethod.POST, json, "company/register");
+    private static String getJson(String email, String password){
+        return new JSONObject()
+                .put("email", email)
+                .put("password", password)
+                .toString();
+    }
+
+    public static ServiceResult loginCompanyUser(String email, String password) {
+        String restResponse = ApiClient.getRestResponse(HttpMethod.POST, "company/login", getJson(email, password));
+        return ParserUtil.toServiceResult(restResponse);
     }
 }

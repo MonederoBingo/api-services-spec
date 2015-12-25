@@ -11,11 +11,11 @@ public class ParserUtil {
             JSONObject jsonObject = new JSONObject(json);
             boolean success = jsonObject.getBoolean("success");
             ServiceMessage serviceMessage = parseServiceMessage(jsonObject.getJSONObject("message"));
-            String object = "";
+            Object object = "";
             if (jsonObject.has("object")) {
-                object = jsonObject.getString("object");
+                object = jsonObject.get("object");
             }
-            return new ServiceResult(success, serviceMessage, object);
+            return new ServiceResult(success, serviceMessage, object.toString());
         } catch (Exception ex) {
             throw new RuntimeException("Error when parsing JSON to Service Result. JSON String: " + json, ex);
         }
