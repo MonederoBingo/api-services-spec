@@ -1,4 +1,4 @@
-package com.lealpoints.automated_tests.actions.registration;
+package com.lealpoints.automated_tests.actions.registration.company;
 
 import com.lealpoints.automated_tests.actions.util.ParserUtil;
 import com.lealpoints.automated_tests.api.ApiClient;
@@ -6,7 +6,7 @@ import com.lealpoints.automated_tests.api.HttpMethod;
 import com.lealpoints.automated_tests.model.ServiceResult;
 import org.json.JSONObject;
 
-public class CompanyRegistrationAction {
+public class RegistrationAction {
     public static final Data DEFAULT_DATA = new Data();
 
     private static String getJson(Data data) {

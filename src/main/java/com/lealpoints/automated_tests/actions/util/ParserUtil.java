@@ -2,7 +2,6 @@ package com.lealpoints.automated_tests.actions.util;
 
 import com.lealpoints.automated_tests.model.ServiceMessage;
 import com.lealpoints.automated_tests.model.ServiceResult;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ParserUtil {
@@ -15,7 +14,8 @@ public class ParserUtil {
             if (jsonObject.has("object")) {
                 object = jsonObject.get("object");
             }
-            return new ServiceResult(success, serviceMessage, object.toString());
+            String extraInfo = jsonObject.has("extraInfo") ? jsonObject.getString("extraInfo") : "";
+            return new ServiceResult(success, serviceMessage, object.toString(), extraInfo);
         } catch (Exception ex) {
             throw new RuntimeException("Error when parsing JSON to Service Result. JSON String: " + json, ex);
         }

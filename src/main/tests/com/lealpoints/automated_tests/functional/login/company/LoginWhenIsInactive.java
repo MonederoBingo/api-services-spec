@@ -1,11 +1,12 @@
-package com.lealpoints.automated_tests.functional.login;
+package com.lealpoints.automated_tests.functional.login.company;
 
-import com.lealpoints.automated_tests.actions.login.CompanyUserLoginAction;
+import com.lealpoints.automated_tests.actions.login.company.UserLoginAction;
 import com.lealpoints.automated_tests.functional.BaseApiTest;
-import com.lealpoints.automated_tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.automated_tests.actions.registration.company.RegistrationAction;
 import com.lealpoints.automated_tests.model.Language;
 import com.lealpoints.automated_tests.model.ServiceResult;
 import org.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import static com.lealpoints.automated_tests.functional.common.CommonTests.testM
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-public class CompanyUserLoginTest extends BaseApiTest {
+public class LoginWhenIsInactive extends BaseApiTest {
 
     private static Map<Language, String> expectedMessages = new HashMap<>();
 
@@ -26,17 +27,22 @@ public class CompanyUserLoginTest extends BaseApiTest {
                 "clic en el link de activación.");
     }
 
+    private final String email = "test@lealpoints.com";
+    private final String password = "Password";
+
+    @Before
+    public void setUp() {
+        RegistrationAction.registerCompany(getRegistrationData(email, password));
+    }
+
     @Test
-    public void testRegisterCompany() {
-        final String email = "test@lealpoints.com";
-        final String password = "Password";
-        CompanyRegistrationAction.registerCompany(getRegistrationData(email, password));
-        final ServiceResult serviceResult = CompanyUserLoginAction.loginCompanyUser(email, password);
+    public void test() {
+        final ServiceResult serviceResult = UserLoginAction.loginCompanyUser(email, password);
         runAssertions(serviceResult);
     }
 
-    private CompanyRegistrationAction.Data getRegistrationData(String email, String password) {
-        return new CompanyRegistrationAction.Data()
+    private RegistrationAction.Data getRegistrationData(String email, String password) {
+        return new RegistrationAction.Data()
                 .setEmail(email)
                 .setPassword(password)
                 .setPasswordConfirmation(password);
@@ -51,4 +57,3 @@ public class CompanyUserLoginTest extends BaseApiTest {
         testMessages(serviceResult, expectedMessages);
     }
 }
-

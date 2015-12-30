@@ -1,6 +1,6 @@
-package com.lealpoints.automated_tests.functional.registration;
+package com.lealpoints.automated_tests.functional.registration.company;
 
-import com.lealpoints.automated_tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.automated_tests.actions.registration.company.RegistrationAction;
 import com.lealpoints.automated_tests.functional.BaseApiTest;
 import com.lealpoints.automated_tests.model.Language;
 import com.lealpoints.automated_tests.model.ServiceResult;
@@ -10,11 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.lealpoints.automated_tests.actions.util.TestUtil.isInteger;
-import static com.lealpoints.automated_tests.functional.common.CommonTests.testMessages;
+import static com.lealpoints.automated_tests.functional.common.CommonTests.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class CompanyRegistrationTest extends BaseApiTest {
+public class Registration extends BaseApiTest {
 
     private static Map<Language, String> expectedMessages = new HashMap<>();
 
@@ -26,8 +26,8 @@ public class CompanyRegistrationTest extends BaseApiTest {
     }
 
     @Test
-    public void testRegisterCompany() {
-        ServiceResult serviceResult = CompanyRegistrationAction.registerCompany(CompanyRegistrationAction.DEFAULT_DATA);
+    public void test() {
+        ServiceResult serviceResult = RegistrationAction.registerCompany(RegistrationAction.DEFAULT_DATA);
         assertEquals(true, serviceResult.isSuccess());
         assertTrue(isInteger(serviceResult.getObject()));
         testMessages(serviceResult, expectedMessages);
