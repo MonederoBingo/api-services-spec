@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.registration.email;
+package com.lealpoints.tests.functional.scenarios.registration.company_name;
 
 import com.lealpoints.tests.actions.registration.company.RegistrationAction;
 import com.lealpoints.tests.functional.BaseApiTest;
@@ -11,20 +11,21 @@ import java.util.Map;
 
 import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMessages;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class InvalidEmail extends BaseApiTest {
+public class MissingCompanyName extends BaseApiTest {
 
     private static Map<Language, String> _expectedMessages = new HashMap<>();
 
     static {
-        _expectedMessages.put(Language.ENGLISH, "Specify a valid email");
-        _expectedMessages.put(Language.SPANISH, "Indique un email válido");
+        _expectedMessages.put(Language.ENGLISH, "Specify the company name");
+        _expectedMessages.put(Language.SPANISH, "Indique el nombre de la compañía");
     }
 
     @Test
     public void test() {
         ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setEmail("invalid_email.."));
+                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setCompanyName(""));
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

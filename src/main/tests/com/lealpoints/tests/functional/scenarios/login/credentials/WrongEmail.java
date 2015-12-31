@@ -25,7 +25,7 @@ public class WrongEmail extends BaseApiTest {
     }
 
     private final String _password = "Password";
-    private final RegistrationAction.Data _registrationData = RegistrationAction.DEFAULT_DATA
+    private final RegistrationAction.Data _registrationData = RegistrationAction.getDefaultData()
             .setEmail("test@lealpoints.com")
             .setPassword(_password)
             .setPasswordConfirmation(_password);

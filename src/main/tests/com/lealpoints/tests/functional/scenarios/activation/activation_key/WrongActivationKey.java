@@ -28,7 +28,7 @@ public class WrongActivationKey extends BaseApiTest {
 
     @Test
     public void test() {
-        RegistrationAction.registerCompany(RegistrationAction.DEFAULT_DATA);
+        RegistrationAction.registerCompany(RegistrationAction.getDefaultData());
         final ServiceResult serviceResult = ActivateUserAction.activate("DIFFERENT_ACTIVATION_KEY");
         assertServiceMessages(serviceResult, _expectedMessages);
         runAssertions(serviceResult);

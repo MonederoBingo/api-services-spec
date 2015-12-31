@@ -24,7 +24,7 @@ public class MissingEmail extends BaseApiTest {
     @Test
     public void test() {
         ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.DEFAULT_DATA.setEmail(""));
+                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setEmail(""));
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

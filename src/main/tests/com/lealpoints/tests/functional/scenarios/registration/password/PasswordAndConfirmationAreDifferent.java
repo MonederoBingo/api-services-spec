@@ -29,7 +29,7 @@ public class PasswordAndConfirmationAreDifferent extends BaseApiTest {
     }
 
     private RegistrationAction.Data getData() {
-        return RegistrationAction.DEFAULT_DATA
+        return RegistrationAction.getDefaultData()
                 .setPassword("password")
                 .setPasswordConfirmation("different_password");
     }

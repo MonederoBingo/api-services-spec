@@ -7,8 +7,6 @@ import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
 
 public class RegistrationAction {
-    public static final Data DEFAULT_DATA = new Data();
-
     private static String getJson(Data data) {
         return new JSONObject()
                 .put("companyName", data.companyName)
@@ -24,6 +22,10 @@ public class RegistrationAction {
     public static ServiceResult registerCompany(Data data) {
         String restResponse = ApiClient.getRestResponse(HttpMethod.POST, "company/register", getJson(data));
         return ParserUtil.toServiceResult(restResponse);
+    }
+
+    public static Data getDefaultData() {
+        return new Data();
     }
 
     public static class Data {
@@ -47,6 +49,16 @@ public class RegistrationAction {
 
         public Data setPasswordConfirmation(String passwordConfirmation) {
             this.passwordConfirmation = passwordConfirmation;
+            return this;
+        }
+
+        public Data setLanguage(String language) {
+            this.language = language;
+            return this;
+        }
+
+        public Data setCompanyName(String companyName) {
+            this.companyName = companyName;
             return this;
         }
     }

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class SuccessfulLogin extends BaseApiTest {
     private final String _email = "test@lealpoints.com";
     private final String _password = "Password";
-    final RegistrationAction.Data _registrationData = RegistrationAction.DEFAULT_DATA
+    final RegistrationAction.Data _registrationData = RegistrationAction.getDefaultData()
             .setEmail(_email)
             .setPassword(_password)
             .setPasswordConfirmation(_password);
