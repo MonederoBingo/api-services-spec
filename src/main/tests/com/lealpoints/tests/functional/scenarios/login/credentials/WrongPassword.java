@@ -17,7 +17,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 public class WrongPassword extends BaseApiTest {
-
     private static Map<Language, String> expectedMessages = new HashMap<>();
 
     static {
