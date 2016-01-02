@@ -23,8 +23,9 @@ public class InvalidEmail extends BaseApiTest {
 
     @Test
     public void test() {
+        final RegistrationAction.Data requestData = RegistrationAction.getRequestData().setEmail("invalid_email..");
         ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setEmail("invalid_email.."));
+                RegistrationAction.registerCompany(requestData);
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

@@ -19,12 +19,16 @@ public class RegistrationAction {
                 .toString();
     }
 
+    public static ServiceResult registerCompany() {
+        return registerCompany(new Data());
+    }
+
     public static ServiceResult registerCompany(Data data) {
         String restResponse = ApiClient.getRestResponse(HttpMethod.POST, "company/register", getJson(data));
         return ParserUtil.toServiceResult(restResponse);
     }
 
-    public static Data getDefaultData() {
+    public static Data getRequestData() {
         return new Data();
     }
 

@@ -16,14 +16,14 @@ import static org.junit.Assert.assertTrue;
 public class SuccessfulLogin extends BaseApiTest {
     private final String _email = "test@lealpoints.com";
     private final String _password = "Password";
-    final RegistrationAction.Data _registrationData = RegistrationAction.getDefaultData()
+    private final RegistrationAction.Data _requestData = RegistrationAction.getRequestData()
             .setEmail(_email)
             .setPassword(_password)
             .setPasswordConfirmation(_password);
 
     @Before
     public void setUp() {
-        final ServiceResult serviceResult = RegistrationAction.registerCompany(_registrationData);
+        final ServiceResult serviceResult = RegistrationAction.registerCompany(_requestData);
         ActivateUserAction.activate(serviceResult.getExtraInfo());
     }
 

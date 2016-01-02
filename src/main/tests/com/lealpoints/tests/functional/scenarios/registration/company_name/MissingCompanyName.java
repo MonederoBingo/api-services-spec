@@ -11,7 +11,6 @@ import java.util.Map;
 
 import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMessages;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class MissingCompanyName extends BaseApiTest {
 
@@ -24,8 +23,8 @@ public class MissingCompanyName extends BaseApiTest {
 
     @Test
     public void test() {
-        ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setCompanyName(""));
+        final RegistrationAction.Data requestData = RegistrationAction.getRequestData().setCompanyName("");
+        ServiceResult serviceResult = RegistrationAction.registerCompany(requestData);
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

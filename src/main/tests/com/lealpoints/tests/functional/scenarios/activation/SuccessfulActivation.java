@@ -25,7 +25,7 @@ public class SuccessfulActivation extends BaseApiTest {
 
     @Test
     public void test() {
-        final ServiceResult registrationServiceResult = RegistrationAction.registerCompany(RegistrationAction.getDefaultData());
+        final ServiceResult registrationServiceResult = RegistrationAction.registerCompany();
         final ServiceResult serviceResult = ActivateUserAction.activate(registrationServiceResult.getExtraInfo());
         assertServiceMessages(serviceResult, _expectedMessages);
         runAssertions(serviceResult);

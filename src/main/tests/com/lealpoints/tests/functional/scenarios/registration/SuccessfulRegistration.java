@@ -26,7 +26,7 @@ public class SuccessfulRegistration extends BaseApiTest {
 
     @Test
     public void test() {
-        ServiceResult serviceResult = RegistrationAction.registerCompany(RegistrationAction.getDefaultData());
+        ServiceResult serviceResult = RegistrationAction.registerCompany();
         assertTrue(serviceResult.isSuccess());
         assertTrue(isInteger(serviceResult.getObject()));
         assertServiceMessages(serviceResult, _expectedMessages);

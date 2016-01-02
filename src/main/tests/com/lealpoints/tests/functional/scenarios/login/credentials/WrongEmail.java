@@ -25,14 +25,14 @@ public class WrongEmail extends BaseApiTest {
     }
 
     private final String _password = "Password";
-    private final RegistrationAction.Data _registrationData = RegistrationAction.getDefaultData()
+    private final RegistrationAction.Data _requestData = RegistrationAction.getRequestData()
             .setEmail("test@lealpoints.com")
             .setPassword(_password)
             .setPasswordConfirmation(_password);
 
     @Before
     public void setUp() {
-        final ServiceResult registrationServiceResult = RegistrationAction.registerCompany(_registrationData);
+        final ServiceResult registrationServiceResult = RegistrationAction.registerCompany(_requestData);
         ActivateUserAction.activate(registrationServiceResult.getExtraInfo());
     }
 

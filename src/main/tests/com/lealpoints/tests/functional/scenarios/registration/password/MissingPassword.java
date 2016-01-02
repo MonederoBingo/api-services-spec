@@ -25,8 +25,8 @@ public class MissingPassword extends BaseApiTest {
 
     @Test
     public void test() {
-        ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setPassword(""));
+        final RegistrationAction.Data requestData = RegistrationAction.getRequestData().setPassword("");
+        ServiceResult serviceResult = RegistrationAction.registerCompany(requestData);
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

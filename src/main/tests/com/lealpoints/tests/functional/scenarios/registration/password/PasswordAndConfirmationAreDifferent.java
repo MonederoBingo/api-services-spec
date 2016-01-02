@@ -15,6 +15,9 @@ import static org.junit.Assert.assertFalse;
 public class PasswordAndConfirmationAreDifferent extends BaseApiTest {
 
     private static Map<Language, String> _expectedMessages = new HashMap<>();
+    private final RegistrationAction.Data _requestData = RegistrationAction.getRequestData()
+            .setPassword("password")
+            .setPasswordConfirmation("different_password");
 
     static {
         _expectedMessages.put(Language.ENGLISH, "Password and confirmation are different.");
@@ -23,15 +26,10 @@ public class PasswordAndConfirmationAreDifferent extends BaseApiTest {
 
     @Test
     public void test() {
-        ServiceResult serviceResult = RegistrationAction.registerCompany(getData());
+        final RegistrationAction.Data requestData = _requestData;
+        ServiceResult serviceResult = RegistrationAction.registerCompany(requestData);
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
-    }
-
-    private RegistrationAction.Data getData() {
-        return RegistrationAction.getDefaultData()
-                .setPassword("password")
-                .setPasswordConfirmation("different_password");
     }
 }
 

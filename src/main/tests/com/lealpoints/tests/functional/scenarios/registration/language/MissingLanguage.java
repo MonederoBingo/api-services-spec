@@ -25,8 +25,8 @@ public class MissingLanguage extends BaseApiTest {
 
     @Test
     public void test() {
-        ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData().setLanguage(""));
+        final RegistrationAction.Data requestData = RegistrationAction.getRequestData().setLanguage("");
+        ServiceResult serviceResult = RegistrationAction.registerCompany(requestData);
         assertTrue(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

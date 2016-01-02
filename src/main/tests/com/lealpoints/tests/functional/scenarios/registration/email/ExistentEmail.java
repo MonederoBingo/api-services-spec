@@ -24,13 +24,12 @@ public class ExistentEmail extends BaseApiTest {
 
     @Before
     public void setUp() {
-        RegistrationAction.registerCompany(RegistrationAction.getDefaultData());
+        RegistrationAction.registerCompany();
     }
 
     @Test
     public void test() {
-        ServiceResult serviceResult =
-                RegistrationAction.registerCompany(RegistrationAction.getDefaultData());
+        ServiceResult serviceResult = RegistrationAction.registerCompany();
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }
