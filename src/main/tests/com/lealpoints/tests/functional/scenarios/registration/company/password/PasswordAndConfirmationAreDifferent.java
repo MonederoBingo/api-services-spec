@@ -1,6 +1,6 @@
-package com.lealpoints.tests.functional.scenarios.registration.password;
+package com.lealpoints.tests.functional.scenarios.registration.company.password;
 
-import com.lealpoints.tests.actions.registration.company.RegistrationAction;
+import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertFalse;
 public class PasswordAndConfirmationAreDifferent extends BaseApiTest {
 
     private static Map<Language, String> _expectedMessages = new HashMap<>();
-    private final RegistrationAction.Data _requestData = RegistrationAction.getRequestData()
+    private final CompanyRegistrationAction.RequestData _requestRequestData = CompanyRegistrationAction.getRequestData()
             .setPassword("password")
             .setPasswordConfirmation("different_password");
 
@@ -26,8 +26,8 @@ public class PasswordAndConfirmationAreDifferent extends BaseApiTest {
 
     @Test
     public void test() {
-        final RegistrationAction.Data requestData = _requestData;
-        ServiceResult serviceResult = RegistrationAction.registerCompany(requestData);
+        final CompanyRegistrationAction.RequestData requestRequestData = _requestRequestData;
+        ServiceResult serviceResult = CompanyRegistrationAction.registerCompany(requestRequestData);
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, _expectedMessages);
     }

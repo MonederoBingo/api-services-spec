@@ -1,7 +1,7 @@
 package com.lealpoints.tests.functional.scenarios.activation;
 
-import com.lealpoints.tests.actions.registration.company.ActivateUserAction;
-import com.lealpoints.tests.actions.registration.company.RegistrationAction;
+import com.lealpoints.tests.actions.registration.ActivateCompanyUserAction;
+import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -25,8 +25,8 @@ public class SuccessfulActivation extends BaseApiTest {
 
     @Test
     public void test() {
-        final ServiceResult registrationServiceResult = RegistrationAction.registerCompany();
-        final ServiceResult serviceResult = ActivateUserAction.activate(registrationServiceResult.getExtraInfo());
+        final ServiceResult registrationServiceResult = CompanyRegistrationAction.registerCompany();
+        final ServiceResult serviceResult = ActivateCompanyUserAction.activate(registrationServiceResult.getExtraInfo());
         assertServiceMessages(serviceResult, _expectedMessages);
         runAssertions(serviceResult);
     }

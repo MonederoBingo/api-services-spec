@@ -1,7 +1,7 @@
 package com.lealpoints.tests.functional.scenarios.activation.activation_key;
 
-import com.lealpoints.tests.actions.registration.company.ActivateUserAction;
-import com.lealpoints.tests.actions.registration.company.RegistrationAction;
+import com.lealpoints.tests.actions.registration.ActivateCompanyUserAction;
+import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -28,8 +28,8 @@ public class WrongActivationKey extends BaseApiTest {
 
     @Test
     public void test() {
-        RegistrationAction.registerCompany();
-        final ServiceResult serviceResult = ActivateUserAction.activate("DIFFERENT_ACTIVATION_KEY");
+        CompanyRegistrationAction.registerCompany();
+        final ServiceResult serviceResult = ActivateCompanyUserAction.activate("DIFFERENT_ACTIVATION_KEY");
         assertServiceMessages(serviceResult, _expectedMessages);
         runAssertions(serviceResult);
     }

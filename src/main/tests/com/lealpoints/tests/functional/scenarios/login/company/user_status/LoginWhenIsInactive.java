@@ -1,8 +1,8 @@
-package com.lealpoints.tests.functional.scenarios.login.user_status;
+package com.lealpoints.tests.functional.scenarios.login.company.user_status;
 
-import com.lealpoints.tests.actions.login.company.UserLoginAction;
+import com.lealpoints.tests.actions.login.CompanyUserLoginAction;
 import com.lealpoints.tests.functional.BaseApiTest;
-import com.lealpoints.tests.actions.registration.company.RegistrationAction;
+import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
@@ -32,17 +32,17 @@ public class LoginWhenIsInactive extends BaseApiTest {
 
     @Before
     public void setUp() {
-        RegistrationAction.registerCompany(getData());
+        CompanyRegistrationAction.registerCompany(getData());
     }
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = UserLoginAction.loginCompanyUser(_email, _password);
+        final ServiceResult serviceResult = CompanyUserLoginAction.loginUser(_email, _password);
         runAssertions(serviceResult);
     }
 
-    private RegistrationAction.Data getData() {
-        return new RegistrationAction.Data()
+    private CompanyRegistrationAction.RequestData getData() {
+        return new CompanyRegistrationAction.RequestData()
                 .setEmail(_email)
                 .setPassword(_password)
                 .setPasswordConfirmation(_password);

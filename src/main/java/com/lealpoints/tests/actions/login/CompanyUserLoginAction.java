@@ -1,4 +1,4 @@
-package com.lealpoints.tests.actions.login.company;
+package com.lealpoints.tests.actions.login;
 
 import com.lealpoints.tests.actions.util.ParserUtil;
 import com.lealpoints.tests.api.ApiClient;
@@ -6,7 +6,7 @@ import com.lealpoints.tests.api.HttpMethod;
 import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
 
-public class UserLoginAction {
+public class CompanyUserLoginAction {
     private static String getJson(String email, String password){
         return new JSONObject()
                 .put("email", email)
@@ -14,7 +14,7 @@ public class UserLoginAction {
                 .toString();
     }
 
-    public static ServiceResult loginCompanyUser(String email, String password) {
+    public static ServiceResult loginUser(String email, String password) {
         String restResponse = ApiClient.getRestResponse(HttpMethod.POST, "company/login", getJson(email, password));
         return ParserUtil.toServiceResult(restResponse);
     }
