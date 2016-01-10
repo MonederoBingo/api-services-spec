@@ -27,13 +27,13 @@ public class SuccessfulActivation extends BaseApiTest {
     public void test() {
         final ServiceResult registrationServiceResult = CompanyRegistrationAction.registerCompany();
         final ServiceResult serviceResult = ActivateCompanyUserAction.activate(registrationServiceResult.getExtraInfo());
-        assertServiceMessages(serviceResult, _expectedMessages);
         runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
         assertTrue(serviceResult.isSuccess());
+        assertServiceMessages(serviceResult, _expectedMessages);
     }
 }
 

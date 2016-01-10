@@ -35,8 +35,8 @@ public class SuccessfulLogin extends BaseApiTest {
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertTrue(serviceResult.isSuccess());
-        JSONObject jsonObject = new JSONObject(serviceResult.getObject());
+        JSONObject jsonObject = serviceResult.getJSONObject();
+        assertNotNull(jsonObject);
         assertTrue(jsonObject.getBoolean("isActive"));
         assertFalse(jsonObject.getBoolean("mustChangePassword"));
     }

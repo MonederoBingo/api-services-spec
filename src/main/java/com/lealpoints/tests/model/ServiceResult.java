@@ -1,5 +1,7 @@
 package com.lealpoints.tests.model;
 
+import org.json.JSONObject;
+
 public class ServiceResult {
     private final boolean success;
     private final ServiceMessage serviceMessage;
@@ -24,6 +26,10 @@ public class ServiceResult {
 
     public String getTranslation(Language language) {
         return serviceMessage.getTranslation(language);
+    }
+
+    public JSONObject getJSONObject() {
+        return new JSONObject(object);
     }
 
     public String getObject() {

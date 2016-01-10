@@ -50,8 +50,8 @@ public class LoginWhenIsInactive extends BaseApiTest {
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertFalse(serviceResult.isSuccess());
-        JSONObject jsonObject = new JSONObject(serviceResult.getObject());
+        JSONObject jsonObject = serviceResult.getJSONObject();
+        assertNotNull(jsonObject);
         assertFalse(jsonObject.getBoolean("isActive"));
         assertFalse(jsonObject.getBoolean("mustChangePassword"));
         assertServiceMessages(serviceResult, expectedMessages);

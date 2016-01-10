@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.lealpoints.tests.functional.util.CommonTests.isInteger;
 import static org.junit.Assert.*;
 
 public class SuccessfulLogin extends BaseApiTest {
@@ -35,8 +34,8 @@ public class SuccessfulLogin extends BaseApiTest {
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
         assertTrue(serviceResult.isSuccess());
-        assertNotNull(serviceResult.getObject());
-        JSONObject jsonObject = new JSONObject(serviceResult.getObject());
+        JSONObject jsonObject = serviceResult.getJSONObject();
+        assertNotNull(jsonObject);
         assertTrue(jsonObject.getInt("clientUserId") > 0);
         assertTrue(jsonObject.has("apiKey"));
         assertNotEquals("", jsonObject.getString("apiKey"));
