@@ -27,6 +27,10 @@ public class GetDefaultConfiguration extends BaseApiTest {
     public void test() {
         ApiAction apiAction = new PointsConfigurationAction(_apiUser);
         final ServiceResult serviceResult = apiAction.execute();
+        runAssertions(serviceResult);
+    }
+
+    private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
         JSONObject jsonObject = serviceResult.getJSONObject();
         assertNotNull(jsonObject);

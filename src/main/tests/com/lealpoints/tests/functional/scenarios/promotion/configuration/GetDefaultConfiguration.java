@@ -26,6 +26,10 @@ public class GetDefaultConfiguration extends BaseApiTest {
     public void test() {
         ApiAction apiAction = new PromotionConfigurationAction(_apiUser);
         final ServiceResult serviceResult = apiAction.execute();
+        runAssertions(serviceResult);
+    }
+
+    private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
         JSONArray jsonArray = serviceResult.getJSONArray();
         assertNotNull(jsonArray);
