@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class GetConfiguration extends BaseApiTest {
+public class GetDefaultConfiguration extends BaseApiTest {
 
     private ApiUser _apiUser;
     @Before

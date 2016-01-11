@@ -1,5 +1,6 @@
 package com.lealpoints.tests.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ServiceResult {
@@ -30,6 +31,10 @@ public class ServiceResult {
 
     public JSONObject getJSONObject() {
         return new JSONObject(object);
+    }
+
+    public JSONArray getJSONArray() {
+        return new JSONArray(object);
     }
 
     public String getObject() {
