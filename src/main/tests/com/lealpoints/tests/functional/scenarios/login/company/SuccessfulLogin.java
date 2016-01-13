@@ -1,8 +1,8 @@
 package com.lealpoints.tests.functional.scenarios.login.company;
 
-import com.lealpoints.tests.actions.login.CompanyUserLoginAction;
-import com.lealpoints.tests.actions.registration.ActivateCompanyUserAction;
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.tests.requests.auth.login.CompanyUserLoginRequest;
+import com.lealpoints.tests.requests.auth.activation.ActivateCompanyUserRequest;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
@@ -14,22 +14,25 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class SuccessfulLogin extends BaseApiTest {
-    private final String _email = "test@lealpoints.com";
-    private final String _password = "Password";
-    private final CompanyRegistrationAction.RequestData _requestRequestData = CompanyRegistrationAction.getRequestData()
-            .setEmail(_email)
-            .setPassword(_password)
-            .setPasswordConfirmation(_password);
+    private final String email = "test@lealpoints.com";
+    private final String password = "Password";
 
     @Before
     public void setUp() {
-        final ServiceResult serviceResult = CompanyRegistrationAction.registerCompany(_requestRequestData);
-        ActivateCompanyUserAction.activate(serviceResult.getExtraInfo());
+        final ServiceResult serviceResult = new CompanyRegistrationRequest()
+                .setEmail(email)
+                .setPassword(password)
+                .setPasswordConfirmation(password)
+                .send();
+        new ActivateCompanyUserRequest().send(serviceResult.getExtraInfo());
     }
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = CompanyUserLoginAction.loginUser(_email, _password);
+        final ServiceResult serviceResult = new CompanyUserLoginRequest()
+                .setEmail(email)
+                .setPassword(password)
+                .send();
         runAssertions(serviceResult);
     }
 

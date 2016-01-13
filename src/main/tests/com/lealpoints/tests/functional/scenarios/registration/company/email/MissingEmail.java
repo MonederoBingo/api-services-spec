@@ -1,6 +1,6 @@
 package com.lealpoints.tests.functional.scenarios.registration.company.email;
 
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -14,19 +14,20 @@ import static org.junit.Assert.assertFalse;
 
 public class MissingEmail extends BaseApiTest {
 
-    private static Map<Language, String> _expectedMessages = new HashMap<>();
+    private static Map<Language, String> expectedMessages = new HashMap<>();
 
     static {
-        _expectedMessages.put(Language.ENGLISH, "Please specify your email");
-        _expectedMessages.put(Language.SPANISH, "Ingresa tu correo electrónico");
+        expectedMessages.put(Language.ENGLISH, "Please specify your email");
+        expectedMessages.put(Language.SPANISH, "Ingresa tu correo electrónico");
     }
 
     @Test
     public void test() {
-        final CompanyRegistrationAction.RequestData requestRequestData = CompanyRegistrationAction.getRequestData().setEmail("");
-        ServiceResult serviceResult = CompanyRegistrationAction.registerCompany(requestRequestData);
+        ServiceResult serviceResult = new CompanyRegistrationRequest()
+                .setEmail("")
+                .send();
         assertFalse(serviceResult.isSuccess());
-        assertServiceMessages(serviceResult, _expectedMessages);
+        assertServiceMessages(serviceResult, expectedMessages);
     }
 }
 

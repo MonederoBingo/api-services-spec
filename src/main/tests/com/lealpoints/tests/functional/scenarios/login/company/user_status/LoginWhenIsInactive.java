@@ -1,8 +1,8 @@
 package com.lealpoints.tests.functional.scenarios.login.company.user_status;
 
-import com.lealpoints.tests.actions.login.CompanyUserLoginAction;
+import com.lealpoints.tests.requests.auth.login.CompanyUserLoginRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
@@ -27,25 +27,25 @@ public class LoginWhenIsInactive extends BaseApiTest {
                 "clic en el link de activación.");
     }
 
-    private final String _email = "test@lealpoints.com";
-    private final String _password = "Password";
+    private final String email = "test@lealpoints.com";
+    private final String password = "Password";
 
     @Before
     public void setUp() {
-        CompanyRegistrationAction.registerCompany(getData());
+        new CompanyRegistrationRequest()
+                .setEmail(email)
+                .setPassword(password)
+                .setPasswordConfirmation(password)
+                .send();
     }
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = CompanyUserLoginAction.loginUser(_email, _password);
+        final ServiceResult serviceResult = new CompanyUserLoginRequest()
+                .setEmail(email)
+                .setPassword(password)
+                .send();
         runAssertions(serviceResult);
-    }
-
-    private CompanyRegistrationAction.RequestData getData() {
-        return new CompanyRegistrationAction.RequestData()
-                .setEmail(_email)
-                .setPassword(_password)
-                .setPasswordConfirmation(_password);
     }
 
     private void runAssertions(ServiceResult serviceResult) {

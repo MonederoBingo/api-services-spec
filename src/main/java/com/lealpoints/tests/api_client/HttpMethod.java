@@ -1,4 +1,4 @@
-package com.lealpoints.tests.api;
+package com.lealpoints.tests.api_client;
 
 public enum HttpMethod {
     GET,

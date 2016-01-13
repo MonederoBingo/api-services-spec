@@ -1,6 +1,6 @@
 package com.lealpoints.tests.functional.scenarios.registration.client.phone;
 
-import com.lealpoints.tests.actions.registration.ClientRegistrationAction;
+import com.lealpoints.tests.requests.auth.registration.ClientRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -13,11 +13,11 @@ import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMess
 import static org.junit.Assert.assertFalse;
 
 public class InvalidPhoneNumber extends BaseApiTest {
-    private static Map<Language, String> _expectedMessages = new HashMap<>();
+    private static Map<Language, String> expectedMessages = new HashMap<>();
 
     static {
-        _expectedMessages.put(Language.ENGLISH, "Phone must have 10 digits.");
-        _expectedMessages.put(Language.SPANISH, "El número de teléfono debe tener al menos 10 dígitos.");
+        expectedMessages.put(Language.ENGLISH, "Phone must have 10 digits.");
+        expectedMessages.put(Language.SPANISH, "El número de teléfono debe tener al menos 10 dígitos.");
     }
 
     @Test
@@ -31,12 +31,9 @@ public class InvalidPhoneNumber extends BaseApiTest {
     }
 
     private void testPhoneNumber(String phoneNumber) {
-        ClientRegistrationAction.RequestData requestData = new ClientRegistrationAction.RequestData();
-        requestData.setPhoneNumber(phoneNumber);
-
-        ServiceResult serviceResult = ClientRegistrationAction.registerClient(requestData);
+        ServiceResult serviceResult = new ClientRegistrationRequest().setPhone(phoneNumber).send();
         assertFalse(serviceResult.isSuccess());
-        assertServiceMessages(serviceResult, _expectedMessages);
+        assertServiceMessages(serviceResult, expectedMessages);
     }
 }
 

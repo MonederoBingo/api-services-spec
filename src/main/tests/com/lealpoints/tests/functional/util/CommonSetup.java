@@ -1,9 +1,9 @@
 package com.lealpoints.tests.functional.util;
 
-import com.lealpoints.tests.actions.login.CompanyUserLoginAction;
-import com.lealpoints.tests.actions.registration.ActivateCompanyUserAction;
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
-import com.lealpoints.tests.model.ApiUser;
+import com.lealpoints.tests.requests.auth.login.CompanyUserLoginRequest;
+import com.lealpoints.tests.requests.auth.activation.ActivateCompanyUserRequest;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
+import com.lealpoints.tests.api_client.ApiUser;
 import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
 
@@ -14,19 +14,22 @@ public class CommonSetup {
         final JSONObject jsonObject = loginResult.getJSONObject();
         final String apiKey = jsonObject.getString("apiKey");
         final Integer companyId = jsonObject.getInt("companyId");
-        return new ApiUser(apiKey, companyId.toString());
+        return new ApiUser(apiKey, String.valueOf(companyId));
     }
 
     private static ServiceResult activateAndLoginUser(ServiceResult serviceResultResult) {
-        ActivateCompanyUserAction.activate(serviceResultResult.getExtraInfo());
-        return CompanyUserLoginAction.loginUser("test@lealpoints.com", "Password");
+        new ActivateCompanyUserRequest().send(serviceResultResult.getExtraInfo());
+        return new CompanyUserLoginRequest()
+                .setEmail("test@lealpoints.com")
+                .setPassword("Password")
+                .send();
     }
 
     private static ServiceResult registerCompany() {
-        final CompanyRegistrationAction.RequestData requestData = CompanyRegistrationAction.getRequestData()
+        return new CompanyRegistrationRequest()
                 .setEmail("test@lealpoints.com")
                 .setPassword("Password")
-                .setPasswordConfirmation("Password");
-        return CompanyRegistrationAction.registerCompany(requestData);
+                .setPasswordConfirmation("Password")
+                .send();
     }
 }

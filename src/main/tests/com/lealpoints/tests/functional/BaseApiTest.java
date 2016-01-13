@@ -1,6 +1,7 @@
 package com.lealpoints.tests.functional;
 
-import com.lealpoints.tests.actions.transactions.TransactionAction;
+import com.lealpoints.tests.requests.api.transactions.BeginTransactionRequest;
+import com.lealpoints.tests.requests.api.transactions.RollbackTransactionRequest;
 import org.junit.After;
 import org.junit.Before;
 
@@ -8,11 +9,11 @@ public class BaseApiTest {
 
     @Before
     public final void baseSetUp() {
-        TransactionAction.beginTransaction();
+        new BeginTransactionRequest().send();
     }
 
     @After
     public final void baseTearDown() {
-        TransactionAction.rollbackTransaction();
+        new RollbackTransactionRequest().send();
     }
 }

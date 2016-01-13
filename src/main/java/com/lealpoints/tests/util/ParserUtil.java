@@ -1,4 +1,4 @@
-package com.lealpoints.tests.actions.util;
+package com.lealpoints.tests.util;
 
 import com.lealpoints.tests.model.ServiceMessage;
 import com.lealpoints.tests.model.ServiceResult;

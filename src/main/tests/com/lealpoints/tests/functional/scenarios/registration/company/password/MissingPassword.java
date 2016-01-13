@@ -1,6 +1,6 @@
 package com.lealpoints.tests.functional.scenarios.registration.company.password;
 
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -16,19 +16,20 @@ import static org.junit.Assert.assertTrue;
 
 public class MissingPassword extends BaseApiTest {
 
-    private static Map<Language, String> _expectedMessages = new HashMap<>();
+    private static Map<Language, String> expectedMessages = new HashMap<>();
 
     static {
-        _expectedMessages.put(Language.ENGLISH, "Password must have at least 6 characters.");
-        _expectedMessages.put(Language.SPANISH, "La contraseña debe tener al menos seis caracteres.");
+        expectedMessages.put(Language.ENGLISH, "Password must have at least 6 characters.");
+        expectedMessages.put(Language.SPANISH, "La contraseña debe tener al menos seis caracteres.");
     }
 
     @Test
     public void test() {
-        final CompanyRegistrationAction.RequestData requestRequestData = CompanyRegistrationAction.getRequestData().setPassword("");
-        ServiceResult serviceResult = CompanyRegistrationAction.registerCompany(requestRequestData);
+        ServiceResult serviceResult = new CompanyRegistrationRequest()
+                .setPassword("")
+                .send();
         assertFalse(serviceResult.isSuccess());
-        assertServiceMessages(serviceResult, _expectedMessages);
+        assertServiceMessages(serviceResult, expectedMessages);
     }
 }
 

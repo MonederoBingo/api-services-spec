@@ -1,8 +1,8 @@
 package com.lealpoints.tests.functional.scenarios.login.company.credentials;
 
-import com.lealpoints.tests.actions.login.CompanyUserLoginAction;
-import com.lealpoints.tests.actions.registration.ActivateCompanyUserAction;
-import com.lealpoints.tests.actions.registration.CompanyRegistrationAction;
+import com.lealpoints.tests.requests.auth.login.CompanyUserLoginRequest;
+import com.lealpoints.tests.requests.auth.activation.ActivateCompanyUserRequest;
+import com.lealpoints.tests.requests.auth.registration.CompanyRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
@@ -24,21 +24,24 @@ public class WrongEmail extends BaseApiTest {
         expectedMessages.put(Language.SPANISH, "No se pudo iniciar sesión, verifique su correo y contraseña.");
     }
 
-    private final String _password = "Password";
-    private final CompanyRegistrationAction.RequestData _requestRequestData = CompanyRegistrationAction.getRequestData()
-            .setEmail("test@lealpoints.com")
-            .setPassword(_password)
-            .setPasswordConfirmation(_password);
+    private final String password = "Password";
 
     @Before
     public void setUp() {
-        final ServiceResult registrationServiceResult = CompanyRegistrationAction.registerCompany(_requestRequestData);
-        ActivateCompanyUserAction.activate(registrationServiceResult.getExtraInfo());
+        final ServiceResult registrationServiceResult = new CompanyRegistrationRequest()
+                .setEmail("test@lealpoints.com")
+                .setPassword(password)
+                .setPasswordConfirmation(password)
+                .send();
+        new ActivateCompanyUserRequest().send(registrationServiceResult.getExtraInfo());
     }
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = CompanyUserLoginAction.loginUser("DIFFERENT_EMAIL@DIFFERENT.COM", _password);
+        final ServiceResult serviceResult = new CompanyUserLoginRequest()
+                .setEmail("DIFFERENT_EMAIL@DIFFERENT.COM")
+                .setPassword(password)
+                .send();
         runAssertions(serviceResult);
     }
 

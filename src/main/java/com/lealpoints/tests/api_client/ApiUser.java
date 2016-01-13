@@ -1,4 +1,4 @@
-package com.lealpoints.tests.model;
+package com.lealpoints.tests.api_client;
 
 public class ApiUser {
     private final String apiKey;
