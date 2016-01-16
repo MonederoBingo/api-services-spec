@@ -8,7 +8,7 @@ import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
 
 public class CommonSetup {
-    public static ApiUser loginCompanyAndGetApiKey() {
+    public static ApiUser loginCompanyAndGetApiUser() {
         final ServiceResult registrationResult = registerCompany();
         final ServiceResult loginResult = activateAndLoginUser(registrationResult);
         final JSONObject jsonObject = loginResult.getJSONObject();
