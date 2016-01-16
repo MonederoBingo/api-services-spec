@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.points.awarding;
+package com.lealpoints.tests.functional.scenarios.points.awarding.phone_number;
 
 import com.lealpoints.tests.api_client.ApiUser;
 import com.lealpoints.tests.functional.BaseApiTest;
@@ -13,17 +13,14 @@ import java.util.Map;
 
 import static com.lealpoints.tests.functional.util.CommonSetup.loginCompanyAndGetApiUser;
 import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMessages;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SuccessfulAwarding extends BaseApiTest {
+public class InvalidPhoneNumber extends BaseApiTest {
     private ApiUser apiUser;
-
     private static Map<Language, String> expectedMessages = new HashMap<>();
-
     static {
-        expectedMessages.put(Language.ENGLISH, "Points awarded: 100.0");
-        expectedMessages.put(Language.SPANISH, "Puntos otorgados: 100.0");
+        expectedMessages.put(Language.ENGLISH, "Phone must have 10 digits.");
+        expectedMessages.put(Language.SPANISH, "El número de teléfono debe tener al menos 10 dígitos.");
     }
 
     @Before
@@ -32,14 +29,24 @@ public class SuccessfulAwarding extends BaseApiTest {
     }
 
     @Test
-    public void test() {
-        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser).send();
+    public void testInvalidNumber() {
+        testPhoneNumber("INVALID_PHONE_NUMBER");
+    }
+
+    @Test
+    public void testShortNumber() {
+        testPhoneNumber("6612345");
+    }
+
+    private void testPhoneNumber(String phoneNumber) {
+        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser)
+                .setPhoneNumber(phoneNumber)
+                .send();
         runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertEquals("100.0", serviceResult.getObject());
         assertServiceMessages(serviceResult, expectedMessages);
     }
 }

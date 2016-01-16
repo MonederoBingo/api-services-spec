@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.points.awarding;
+package com.lealpoints.tests.functional.scenarios.points.awarding.sale_key;
 
 import com.lealpoints.tests.api_client.ApiUser;
 import com.lealpoints.tests.functional.BaseApiTest;
@@ -13,17 +13,14 @@ import java.util.Map;
 
 import static com.lealpoints.tests.functional.util.CommonSetup.loginCompanyAndGetApiUser;
 import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMessages;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SuccessfulAwarding extends BaseApiTest {
+public class MissingSaleKey extends BaseApiTest {
     private ApiUser apiUser;
-
     private static Map<Language, String> expectedMessages = new HashMap<>();
-
     static {
-        expectedMessages.put(Language.ENGLISH, "Points awarded: 100.0");
-        expectedMessages.put(Language.SPANISH, "Puntos otorgados: 100.0");
+        expectedMessages.put(Language.ENGLISH, "You should specify a sale key");
+        expectedMessages.put(Language.SPANISH, "Indique el número de venta.");
     }
 
     @Before
@@ -33,13 +30,14 @@ public class SuccessfulAwarding extends BaseApiTest {
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser).send();
+        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser)
+                .setSaleKey("")
+                .send();
         runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertEquals("100.0", serviceResult.getObject());
         assertServiceMessages(serviceResult, expectedMessages);
     }
 }

@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.points.awarding;
+package com.lealpoints.tests.functional.scenarios.points.awarding.phone_number;
 
 import com.lealpoints.tests.api_client.ApiUser;
 import com.lealpoints.tests.functional.BaseApiTest;
@@ -16,11 +16,9 @@ import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMess
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SuccessfulAwarding extends BaseApiTest {
+public class NonExistentPhoneNumber extends BaseApiTest {
     private ApiUser apiUser;
-
     private static Map<Language, String> expectedMessages = new HashMap<>();
-
     static {
         expectedMessages.put(Language.ENGLISH, "Points awarded: 100.0");
         expectedMessages.put(Language.SPANISH, "Puntos otorgados: 100.0");
@@ -33,7 +31,9 @@ public class SuccessfulAwarding extends BaseApiTest {
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser).send();
+        final ServiceResult serviceResult = new PointsAwardingRequest(apiUser)
+                .setPhoneNumber("1234567890")
+                .send();
         runAssertions(serviceResult);
     }
 

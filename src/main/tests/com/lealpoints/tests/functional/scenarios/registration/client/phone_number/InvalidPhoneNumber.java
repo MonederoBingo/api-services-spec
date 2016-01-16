@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.registration.client.phone;
+package com.lealpoints.tests.functional.scenarios.registration.client.phone_number;
 
 import com.lealpoints.tests.requests.auth.registration.ClientRegistrationRequest;
 import com.lealpoints.tests.functional.BaseApiTest;

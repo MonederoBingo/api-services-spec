@@ -1,15 +1,15 @@
 package com.lealpoints.tests.functional.scenarios.promotion.configuration;
 
-import com.lealpoints.tests.requests.api.promotions.PromotionConfigurationRequest;
-import com.lealpoints.tests.functional.BaseApiTest;
-import com.lealpoints.tests.functional.util.CommonSetup;
 import com.lealpoints.tests.api_client.ApiUser;
+import com.lealpoints.tests.functional.BaseApiTest;
 import com.lealpoints.tests.model.ServiceResult;
+import com.lealpoints.tests.requests.api.promotions.PromotionConfigurationRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.lealpoints.tests.functional.util.CommonSetup.loginCompanyAndGetApiUser;
 import static org.junit.Assert.*;
 
 public class GetDefaultConfiguration extends BaseApiTest {
@@ -17,7 +17,7 @@ public class GetDefaultConfiguration extends BaseApiTest {
 
     @Before
     public void setUp() {
-        apiUser = CommonSetup.loginCompanyAndGetApiKey();
+        apiUser = loginCompanyAndGetApiUser();
     }
 
     @Test

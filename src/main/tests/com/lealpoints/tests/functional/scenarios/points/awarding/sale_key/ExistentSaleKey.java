@@ -1,4 +1,4 @@
-package com.lealpoints.tests.functional.scenarios.points.awarding;
+package com.lealpoints.tests.functional.scenarios.points.awarding.sale_key;
 
 import com.lealpoints.tests.api_client.ApiUser;
 import com.lealpoints.tests.functional.BaseApiTest;
@@ -16,19 +16,18 @@ import static com.lealpoints.tests.functional.util.CommonTests.assertServiceMess
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SuccessfulAwarding extends BaseApiTest {
+public class ExistentSaleKey extends BaseApiTest {
     private ApiUser apiUser;
-
     private static Map<Language, String> expectedMessages = new HashMap<>();
-
     static {
-        expectedMessages.put(Language.ENGLISH, "Points awarded: 100.0");
-        expectedMessages.put(Language.SPANISH, "Puntos otorgados: 100.0");
+        expectedMessages.put(Language.ENGLISH, "Sale key already exists.");
+        expectedMessages.put(Language.SPANISH, "El número de venta ya existe.");
     }
 
     @Before
     public void setUp() {
         apiUser = loginCompanyAndGetApiUser();
+        new PointsAwardingRequest(apiUser).send();
     }
 
     @Test
