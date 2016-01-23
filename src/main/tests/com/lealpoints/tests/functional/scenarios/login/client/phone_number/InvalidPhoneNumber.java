@@ -28,7 +28,7 @@ public class InvalidPhoneNumber extends BaseApiTest {
     @Before
     public void setUp() {
         final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-        clientRegistrationRequest.setPhone("9991234567");
+        clientRegistrationRequest.setPhoneNumber("9991234567");
         final ServiceResult serviceResult = clientRegistrationRequest.send();
         _smsKey = serviceResult.getObject();
     }

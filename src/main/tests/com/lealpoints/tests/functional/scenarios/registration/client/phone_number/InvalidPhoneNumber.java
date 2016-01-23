@@ -31,7 +31,7 @@ public class InvalidPhoneNumber extends BaseApiTest {
     }
 
     private void testPhoneNumber(String phoneNumber) {
-        ServiceResult serviceResult = new ClientRegistrationRequest().setPhone(phoneNumber).send();
+        ServiceResult serviceResult = new ClientRegistrationRequest().setPhoneNumber(phoneNumber).send();
         assertFalse(serviceResult.isSuccess());
         assertServiceMessages(serviceResult, expectedMessages);
     }

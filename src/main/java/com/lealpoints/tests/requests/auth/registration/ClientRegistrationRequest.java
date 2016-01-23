@@ -5,11 +5,11 @@ import com.lealpoints.tests.api_client.HttpMethod;
 import org.json.JSONObject;
 
 public class ClientRegistrationRequest extends AuthRequest {
-    private String phone = "9991112233";
+    private String phoneNumber = "9991112233";
 
     @Override
     protected String getRequestBody() {
-        return new JSONObject().put("phone", phone).toString();
+        return new JSONObject().put("phoneNumber", phoneNumber).toString();
     }
 
     @Override
@@ -22,8 +22,8 @@ public class ClientRegistrationRequest extends AuthRequest {
         return "client/";
     }
 
-    public ClientRegistrationRequest setPhone(String phone) {
-        this.phone = phone;
+    public ClientRegistrationRequest setPhoneNumber(String phone) {
+        this.phoneNumber = phone;
         return this;
     }
 }

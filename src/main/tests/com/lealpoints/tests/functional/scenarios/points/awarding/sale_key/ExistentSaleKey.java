@@ -38,7 +38,7 @@ public class ExistentSaleKey extends BaseApiTest {
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertEquals("100.0", serviceResult.getObject());
+        assertEquals("", serviceResult.getObject());
         assertServiceMessages(serviceResult, expectedMessages);
     }
 }

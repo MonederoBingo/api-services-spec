@@ -17,7 +17,7 @@ public class SuccessfulLogin extends BaseApiTest {
     @Before
     public void setUp() {
         final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-        clientRegistrationRequest.setPhone(_phoneNumber);
+        clientRegistrationRequest.setPhoneNumber(_phoneNumber);
         final ServiceResult serviceResult = clientRegistrationRequest.send();
         _smsKey = serviceResult.getObject();
     }
