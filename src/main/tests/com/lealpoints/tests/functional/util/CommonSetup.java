@@ -8,28 +8,34 @@ import com.lealpoints.tests.model.ServiceResult;
 import org.json.JSONObject;
 
 public class CommonSetup {
-    public static ApiUser loginCompanyAndGetApiUser() {
-        final ServiceResult registrationResult = registerCompany();
-        final ServiceResult loginResult = activateAndLoginUser(registrationResult);
+
+    public static ApiUser loginCompanyAndGetApiUser(String username, String email) {
+        final ServiceResult registrationResult = registerCompany(username, email);
+        final ServiceResult loginResult = activateAndLoginUser(registrationResult, email);
         final JSONObject jsonObject = loginResult.getJSONObject();
         final String apiKey = jsonObject.getString("apiKey");
         final Integer companyId = jsonObject.getInt("companyId");
         return new ApiUser(apiKey, String.valueOf(companyId));
     }
 
-    private static ServiceResult activateAndLoginUser(ServiceResult serviceResultResult) {
-        new ActivateCompanyUserRequest().send(serviceResultResult.getExtraInfo());
-        return new CompanyUserLoginRequest()
-                .setEmail("test@lealpoints.com")
+    public static ApiUser loginCompanyAndGetApiUser() {
+        return loginCompanyAndGetApiUser("Admin", "test@monederobingo.com");
+    }
+
+    private static ServiceResult registerCompany(String username, String email) {
+        return new CompanyRegistrationRequest()
+                .setUsername(username)
+                .setEmail(email)
                 .setPassword("Password")
+                .setPasswordConfirmation("Password")
                 .send();
     }
 
-    private static ServiceResult registerCompany() {
-        return new CompanyRegistrationRequest()
-                .setEmail("test@lealpoints.com")
+    private static ServiceResult activateAndLoginUser(ServiceResult serviceResultResult, String email) {
+        new ActivateCompanyUserRequest().send(serviceResultResult.getExtraInfo());
+        return new CompanyUserLoginRequest()
+                .setEmail(email)
                 .setPassword("Password")
-                .setPasswordConfirmation("Password")
                 .send();
     }
 }

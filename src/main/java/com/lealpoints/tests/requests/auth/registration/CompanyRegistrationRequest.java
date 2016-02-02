@@ -10,15 +10,15 @@ public class CompanyRegistrationRequest extends AuthRequest {
     private String password = "Pa$$w0rd";
     private String passwordConfirmation = "Pa$$w0rd";
     private String language = "en";
+    private String username = "Admin";
 
     @Override
     protected String getRequestBody() {
         String urlImageLogo = "images/logo.png";
-        String userName = "user name";
         return new JSONObject()
                 .put("companyName", companyName)
                 .put("urlImageLogo", urlImageLogo)
-                .put("userName", userName)
+                .put("username", username)
                 .put("email", email)
                 .put("password", password)
                 .put("passwordConfirmation", passwordConfirmation)
@@ -58,6 +58,11 @@ public class CompanyRegistrationRequest extends AuthRequest {
 
     public CompanyRegistrationRequest setCompanyName(String companyName) {
         this.companyName = companyName;
+        return this;
+    }
+
+    public CompanyRegistrationRequest setUsername(String userName) {
+        this.username = userName;
         return this;
     }
 }

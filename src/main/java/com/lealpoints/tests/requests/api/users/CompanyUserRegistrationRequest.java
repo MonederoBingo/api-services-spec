@@ -43,4 +43,9 @@ public class CompanyUserRegistrationRequest extends ApiRequest {
         this.email = email;
         return this;
     }
+
+    public CompanyUserRegistrationRequest setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 }
