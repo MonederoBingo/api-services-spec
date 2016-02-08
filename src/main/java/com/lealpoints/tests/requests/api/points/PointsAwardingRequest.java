@@ -9,6 +9,7 @@ public class PointsAwardingRequest extends ApiRequest {
     private long companyId = 0;
     private String phoneNumber = "6661234567";
     private String saleKey = "ABC";
+    private float saleAmount = 100;
 
     public PointsAwardingRequest(ApiUser apiUser) {
         super(apiUser);
@@ -17,7 +18,6 @@ public class PointsAwardingRequest extends ApiRequest {
 
     @Override
     public String getRequestBody() {
-        float saleAmount = 100;
         return new JSONObject()
                 .put("companyId", companyId)
                 .put("phoneNumber", phoneNumber)
@@ -43,6 +43,15 @@ public class PointsAwardingRequest extends ApiRequest {
 
     public PointsAwardingRequest setSaleKey(String saleKey) {
         this.saleKey = saleKey;
+        return this;
+    }
+
+    public float getSaleAmount() {
+        return saleAmount;
+    }
+
+    public PointsAwardingRequest setSaleAmount(float saleAmount) {
+        this.saleAmount = saleAmount;
         return this;
     }
 }
