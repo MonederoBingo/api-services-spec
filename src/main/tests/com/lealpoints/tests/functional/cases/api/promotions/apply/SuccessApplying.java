@@ -1,59 +1,60 @@
-package com.lealpoints.tests.functional.cases.api.promotions.available_by_client;
+package com.lealpoints.tests.functional.cases.api.promotions.apply;
 
 import com.lealpoints.tests.functional.cases.api.BaseApiTest;
 import com.lealpoints.tests.model.Language;
 import com.lealpoints.tests.model.ServiceResult;
 import com.lealpoints.tests.requests.api.points.PointsAwardingRequest;
+import com.lealpoints.tests.requests.api.promotions.ApplyPromotionRequest;
 import com.lealpoints.tests.requests.api.promotions.PromotionGetAvailableByClientRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import static com.lealpoints.tests.functional.util.CommonTests.isInteger;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-public class SuccessfulListing extends BaseApiTest {
+public class SuccessApplying extends BaseApiTest {
     private ServiceResult serviceResult;
     String phoneNumber = "6661234567";
+    long promotionConfigurationId;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         PointsAwardingRequest pointsAwardingRequest = new PointsAwardingRequest(getApiUser());
         pointsAwardingRequest.setPhoneNumber(phoneNumber);
         pointsAwardingRequest.setSaleAmount(1000);
         pointsAwardingRequest.send();
+
+        PromotionGetAvailableByClientRequest promotionGetAvailableByClientRequest =
+                new PromotionGetAvailableByClientRequest(getApiUser());
+        promotionGetAvailableByClientRequest.setPhoneNumber(phoneNumber);
+        ServiceResult serviceResult = promotionGetAvailableByClientRequest.send();
+        promotionConfigurationId = serviceResult.getJSONArray().getJSONObject(0).getLong("promotionConfigurationId");
     }
 
     @Test
     public void test() {
-        PromotionGetAvailableByClientRequest promotionGetAvailableByClientRequest =
-                new PromotionGetAvailableByClientRequest(getApiUser());
-        promotionGetAvailableByClientRequest.setPhoneNumber(phoneNumber);
-        serviceResult = promotionGetAvailableByClientRequest.send();
+        ApplyPromotionRequest applyPromotionRequest = new ApplyPromotionRequest(getApiUser());
+        applyPromotionRequest.setPhoneNumber(phoneNumber);
+        applyPromotionRequest.setPromotionConfigurationId(promotionConfigurationId);
+        serviceResult = applyPromotionRequest.send();
         runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {
         assertNotNull(serviceResult);
-        assertTrue(serviceResult.isSuccess());
-        assertNotNull(serviceResult.getJSONArray());
-        JSONArray jsonArray = serviceResult.getJSONArray();
-        assertEquals(1, jsonArray.length());
-        JSONObject jsonObject = jsonArray.getJSONObject(0);
-        assertTrue(jsonObject.getLong("companyId") > 0);
-        assertTrue(jsonObject.getLong("promotionConfigurationId") > 0);
-        assertEquals(1000, jsonObject.getDouble("requiredPoints"), 0.00);
-        assertEquals("10% off in your next purchase!", jsonObject.getString("description"));
+        assertEquals(true, serviceResult.isSuccess());
     }
 
     @Override
     protected Map<Language, String> getExpectedMessages() {
-        return null;
+        Map<Language, String> expectedMessages = new HashMap<>();
+        expectedMessages.put(Language.ENGLISH, "Promotion applied.");
+        expectedMessages.put(Language.SPANISH, "Promoción aplicada.");
+        return expectedMessages;
     }
 
     @Override
