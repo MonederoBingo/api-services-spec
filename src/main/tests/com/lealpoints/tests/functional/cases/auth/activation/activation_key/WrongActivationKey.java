@@ -32,9 +32,9 @@ public class WrongActivationKey extends BaseTest {
     protected Map<Language, String> getExpectedMessages() {
         Map<Language, String> expectedMessages = new HashMap<>();
         expectedMessages.put(Language.ENGLISH, ":/ We are very sorry, there was an error. We're trying to solve it. " +
-                "You can email us to support@lealpoints.com if you want to be updated about this.");
+                "You can email us to support@monederobingo.com if you want to be updated about this.");
         expectedMessages.put(Language.SPANISH, ":/ Los sentimos, hubo un error. Estamos tratando de resolverlo, " +
-                "puede enviarnos un correo a support@lealpoints.com si desea saber mas al respecto.");
+                "puede enviarnos un correo a support@monederobingo.com si desea saber mas al respecto.");
         return expectedMessages;
     }
 

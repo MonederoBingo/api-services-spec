@@ -30,8 +30,8 @@ public class ExistentEmail extends BaseTest {
     @Override
     protected Map<Language, String> getExpectedMessages() {
         Map<Language, String> expectedMessages = new HashMap<>();
-        expectedMessages.put(Language.ENGLISH, "This email is already being used on Leal Points.");
-        expectedMessages.put(Language.SPANISH, "Este correo ya se esta utilizando en Leal Points.");
+        expectedMessages.put(Language.ENGLISH, "This email is already being used on Monedero Bingo.");
+        expectedMessages.put(Language.SPANISH, "Este correo ya se esta utilizando en Monedero Bingo.");
         return expectedMessages;
     }
 

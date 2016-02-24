@@ -30,11 +30,16 @@ public abstract class BaseApiTest extends BaseTest {
 
     private ServiceResult registerCompany() {
         return new CompanyRegistrationRequest()
+                .setCompanyName(getCompanyName())
                 .setUsername(username)
                 .setEmail(email)
                 .setPassword("Password")
                 .setPasswordConfirmation("Password")
                 .send();
+    }
+
+    protected String getCompanyName() {
+        return "company name";
     }
 
     private ServiceResult activateAndLoginUser(ServiceResult serviceResultResult) {

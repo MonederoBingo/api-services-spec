@@ -26,9 +26,9 @@ public class SuccessfulRegistration extends BaseTest {
     protected Map<Language, String> getExpectedMessages() {
         Map<Language, String> expectedMessages = new HashMap<>();
         expectedMessages.put(Language.ENGLISH, "We've sent you an email. Open it up to activate your account. " +
-                "If you do not receive that email within 1 hour, please email support@lealpoints.com");
+                "If you do not receive that email within 1 hour, please email support@monederobingo.com");
         expectedMessages.put(Language.SPANISH, "Se ha enviado un link de activación a su correo. Si no lo recibe " +
-                "dentro de una hora, favor de enviar un correo a support@lealpoints.com");
+                "dentro de una hora, favor de enviar un correo a support@monederobingo.com");
         return expectedMessages;
     }
 
