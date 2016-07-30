@@ -5,7 +5,6 @@ import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import com.monederobingo.tests.util.CommonTests;
-import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
