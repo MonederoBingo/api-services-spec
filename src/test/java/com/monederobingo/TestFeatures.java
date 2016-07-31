@@ -10,8 +10,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = { "pretty" },
         snippets = SnippetType.CAMELCASE,
-        glue = {"com.monederobingo.step_definitions"},
-        features = {"src/features"})
+        glue = { "com.monederobingo.step_definitions" },
+        features = { "src/features" },
+        monochrome = true)
 public class TestFeatures
 {
 }
