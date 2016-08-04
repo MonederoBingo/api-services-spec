@@ -16,15 +16,15 @@ public class CompanyRegistration
 
     }
 
-    @When("^User send registration request$")
+    @When("^User sends registration request$")
     public void userSendRegistrationRequest() throws Throwable
     {
-        //successfulRegistration.sendRegistrationRequest();
+        successfulRegistration.sendRegistrationRequest();
     }
 
-    @Then("^The user should receive a message with message saying that was successfully added$")
-    public void theUserShouldReceiveAMessageWithMessageSayingThatWasSuccessfullyAdded() throws Throwable
+    @Then("^The user should receive a message reporting that was successfully added$")
+    public void theUserShouldReceiveAMessageReportingThatWasSuccessfullyAdded() throws Throwable
     {
-       // successfulRegistration.asserts();
+       successfulRegistration.asserts();
     }
 }

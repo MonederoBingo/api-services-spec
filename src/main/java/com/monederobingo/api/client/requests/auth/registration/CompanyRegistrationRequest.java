@@ -33,7 +33,7 @@ public class CompanyRegistrationRequest extends AuthRequest {
 
     @Override
     protected String getUrlPath() {
-        return "/company/register";
+        return "company/register";
     }
 
     public CompanyRegistrationRequest setEmail(String email) {
