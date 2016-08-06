@@ -31,7 +31,7 @@ public abstract class ApiUseCase extends UseCase
 
     private ServiceResult registerCompany() {
         return new CompanyRegistrationRequest()
-                .setCompanyName(getCompanyName())
+                .withCompanyName(getCompanyName())
                 .setUsername(username)
                 .setEmail(email)
                 .setPassword("Password")
