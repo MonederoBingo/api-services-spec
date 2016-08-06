@@ -1,9 +1,9 @@
 package com.monederobingo.tests.use_cases.auth.registration.company.email;
 
-import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
+import com.monederobingo.tests.use_cases.UseCase;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class InvalidEmail extends UseCase
     @Test
     public void test() {
         serviceResult = new CompanyRegistrationRequest()
-                .setEmail("invalid_email..")
+                .withEmail("invalid_email..")
                 .send();
         assertFalse(serviceResult.isSuccess());
     }

@@ -36,7 +36,7 @@ public class CompanyRegistrationRequest extends AuthRequest {
         return "company/register";
     }
 
-    public CompanyRegistrationRequest setEmail(String email) {
+    public CompanyRegistrationRequest withEmail(String email) {
         this.email = email;
         return this;
     }

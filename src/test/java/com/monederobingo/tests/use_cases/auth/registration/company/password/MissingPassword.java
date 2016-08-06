@@ -1,9 +1,9 @@
 package com.monederobingo.tests.use_cases.auth.registration.company.password;
 
-import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
+import com.monederobingo.tests.use_cases.UseCase;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -25,7 +25,7 @@ public class SuccessfulLogin extends UseCase
     @Before
     public void setUp() {
         final ServiceResult serviceResult = new CompanyRegistrationRequest()
-                .setEmail(email)
+                .withEmail(email)
                 .setPassword(password)
                 .setPasswordConfirmation(password)
                 .send();

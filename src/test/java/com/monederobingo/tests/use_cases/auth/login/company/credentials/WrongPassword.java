@@ -23,7 +23,7 @@ public class WrongPassword extends UseCase
     @Before
     public void setUp() {
         final ServiceResult registrationServiceResult = new CompanyRegistrationRequest()
-                .setEmail(email)
+                .withEmail(email)
                 .setPassword("Password")
                 .setPasswordConfirmation("Password")
                 .send();

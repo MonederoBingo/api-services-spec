@@ -33,7 +33,7 @@ public abstract class ApiUseCase extends UseCase
         return new CompanyRegistrationRequest()
                 .withCompanyName(getCompanyName())
                 .setUsername(username)
-                .setEmail(email)
+                .withEmail(email)
                 .setPassword("Password")
                 .setPasswordConfirmation("Password")
                 .send();
