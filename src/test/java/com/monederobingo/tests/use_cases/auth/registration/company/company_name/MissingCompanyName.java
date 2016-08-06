@@ -18,7 +18,7 @@ public class MissingCompanyName extends UseCase
     @Test
     public void test() {
         serviceResult = new CompanyRegistrationRequest()
-                .setCompanyName("")
+                .withCompanyName("")
                 .send();
         assertFalse(serviceResult.isSuccess());
     }

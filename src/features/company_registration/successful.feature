@@ -1,5 +1,5 @@
-Feature: Registering new company
-  Scenario: Non existent company user provides correct information
+Feature: Successful Company Registration
+  Scenario: User provides correct information
     Given User provides correct registration information
     When User sends registration request
     Then The response should be successful

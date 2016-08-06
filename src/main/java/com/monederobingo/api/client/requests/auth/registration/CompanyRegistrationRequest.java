@@ -56,7 +56,7 @@ public class CompanyRegistrationRequest extends AuthRequest {
         return this;
     }
 
-    public CompanyRegistrationRequest setCompanyName(String companyName) {
+    public CompanyRegistrationRequest withCompanyName(String companyName) {
         this.companyName = companyName;
         return this;
     }

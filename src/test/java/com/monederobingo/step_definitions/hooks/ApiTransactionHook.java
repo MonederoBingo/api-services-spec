@@ -6,7 +6,7 @@ import com.monederobingo.api.client.requests.api.transactions.RollbackTransactio
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class TransactionHook
+public class ApiTransactionHook
 {
     @Before
     public final void baseSetUp() {
