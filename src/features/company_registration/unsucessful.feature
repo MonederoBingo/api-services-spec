@@ -23,3 +23,11 @@ Feature: Unsuccessful Company Registration
     And The user should receive the following messages
       | ENGLISH | This email is already being used on Monedero Bingo. |
       | SPANISH | Este correo ya se esta utilizando en Monedero Bingo. |
+
+  Scenario: User provides invalid email
+    Given User provides invalid email
+    When User sends registration request
+    Then The response should be not successful
+    And The user should receive the following messages
+      | ENGLISH | Specify a valid email |
+      | SPANISH | Indique un email válido |

@@ -21,7 +21,7 @@ public class CompanyRegistration
     }
 
     @Given("^User provides empty company name$")
-    public void userProvidesIncorrectCompanyName() throws Throwable
+    public void userProvidesEmptyCompanyName() throws Throwable
     {
         authRequestHolder.set(new CompanyRegistrationRequest().withCompanyName(""));
     }
@@ -37,5 +37,11 @@ public class CompanyRegistration
     {
         new CompanyRegistrationRequest().withEmail("same@email.com").send();
         authRequestHolder.set(new CompanyRegistrationRequest().withEmail("same@email.com"));
+    }
+
+    @Given("^User provides invalid email$")
+    public void userProvidesInvalidEmail() throws Throwable
+    {
+        authRequestHolder.set(new CompanyRegistrationRequest().withEmail("invalid@email@.com."));
     }
 }
