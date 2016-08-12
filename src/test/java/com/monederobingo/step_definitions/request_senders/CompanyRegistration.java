@@ -1,16 +1,16 @@
 /* Copyright 2016 Sabre Holdings */
-package com.monederobingo.step_definitions.senders;
+package com.monederobingo.step_definitions.request_senders;
 
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
 import cucumber.api.java.en.When;
 
-public class CompanyRegistrationRequestSender
+public class CompanyRegistration
 {
     private final ServiceResultHolder serviceResultHolder;
     private final CompanyRegistrationRequest companyRegistrationRequest;
 
-    public CompanyRegistrationRequestSender(ServiceResultHolder serviceResultHolder, CompanyRegistrationRequest companyRegistrationRequest)
+    public CompanyRegistration(ServiceResultHolder serviceResultHolder, CompanyRegistrationRequest companyRegistrationRequest)
     {
         this.serviceResultHolder = serviceResultHolder;
         this.companyRegistrationRequest = companyRegistrationRequest;
