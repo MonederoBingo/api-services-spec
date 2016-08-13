@@ -51,7 +51,7 @@ public class CompanyRegistrationRequest extends AuthRequest {
         return this;
     }
 
-    public CompanyRegistrationRequest setLanguage(String language) {
+    public CompanyRegistrationRequest withLanguage(String language) {
         this.language = language;
         return this;
     }

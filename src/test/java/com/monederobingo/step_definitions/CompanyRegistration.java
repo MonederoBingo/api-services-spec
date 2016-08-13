@@ -43,4 +43,10 @@ public class CompanyRegistration
     {
         companyRegistrationRequest.withEmail("invalid@email@.com.");
     }
+
+    @Given("^User provides empty language$")
+    public void userProvidesEmptyLanguage() throws Throwable
+    {
+        companyRegistrationRequest.withLanguage("");
+    }
 }
