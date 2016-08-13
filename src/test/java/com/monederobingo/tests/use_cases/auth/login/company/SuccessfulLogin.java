@@ -26,8 +26,8 @@ public class SuccessfulLogin extends UseCase
     public void setUp() {
         final ServiceResult serviceResult = new CompanyRegistrationRequest()
                 .withEmail(email)
-                .setPassword(password)
-                .setPasswordConfirmation(password)
+                .withPassword(password)
+                .withPasswordConfirmation(password)
                 .send();
         new ActivateCompanyUserRequest().send(serviceResult.getExtraInfo());
     }

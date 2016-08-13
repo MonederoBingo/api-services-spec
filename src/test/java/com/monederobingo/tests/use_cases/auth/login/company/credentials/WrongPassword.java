@@ -24,8 +24,8 @@ public class WrongPassword extends UseCase
     public void setUp() {
         final ServiceResult registrationServiceResult = new CompanyRegistrationRequest()
                 .withEmail(email)
-                .setPassword("Password")
-                .setPasswordConfirmation("Password")
+                .withPassword("Password")
+                .withPasswordConfirmation("Password")
                 .send();
         new ActivateCompanyUserRequest().send(registrationServiceResult.getExtraInfo());
     }

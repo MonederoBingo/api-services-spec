@@ -24,8 +24,8 @@ public class WrongEmail extends UseCase
     public void setUp() {
         final ServiceResult registrationServiceResult = new CompanyRegistrationRequest()
                 .withEmail("test@lealpoints.com")
-                .setPassword(password)
-                .setPasswordConfirmation(password)
+                .withPassword(password)
+                .withPasswordConfirmation(password)
                 .send();
         new ActivateCompanyUserRequest().send(registrationServiceResult.getExtraInfo());
     }

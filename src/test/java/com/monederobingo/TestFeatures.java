@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = { "pretty" },
+        plugin = { "junit:output" },
         snippets = SnippetType.CAMELCASE,
         glue = { "com.monederobingo.step_definitions" },
         features = { "src/features" },

@@ -25,8 +25,8 @@ public class LoginWhenIsInactive extends UseCase
     public void setUp() {
         new CompanyRegistrationRequest()
                 .withEmail(email)
-                .setPassword(password)
-                .setPasswordConfirmation(password)
+                .withPassword(password)
+                .withPasswordConfirmation(password)
                 .send();
     }
 

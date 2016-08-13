@@ -34,8 +34,8 @@ public abstract class ApiUseCase extends UseCase
                 .withCompanyName(getCompanyName())
                 .setUsername(username)
                 .withEmail(email)
-                .setPassword("Password")
-                .setPasswordConfirmation("Password")
+                .withPassword("Password")
+                .withPasswordConfirmation("Password")
                 .send();
     }
 

@@ -41,12 +41,12 @@ public class CompanyRegistrationRequest extends AuthRequest {
         return this;
     }
 
-    public CompanyRegistrationRequest setPassword(String password) {
+    public CompanyRegistrationRequest withPassword(String password) {
         this.password = password;
         return this;
     }
 
-    public CompanyRegistrationRequest setPasswordConfirmation(String passwordConfirmation) {
+    public CompanyRegistrationRequest withPasswordConfirmation(String passwordConfirmation) {
         this.passwordConfirmation = passwordConfirmation;
         return this;
     }
