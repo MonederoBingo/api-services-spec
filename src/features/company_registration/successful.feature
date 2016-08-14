@@ -1,8 +1,8 @@
 Feature: Successful Company Registration
 
   Scenario: User provides correct information
-    Given User provides correct registration information
-    When User sends registration request
+    Given User provides correct company registration information
+    When User sends company registration request
     Then The response should be successful
     And The user should receive the following messages
       | ENGLISH | We've sent you an email. Open it up to activate your account. If you do not receive that email within 1 hour, please email support@monederobingo.com |
@@ -10,7 +10,7 @@ Feature: Successful Company Registration
 
   Scenario: User provides empty language
     Given User provides empty language
-    When User sends registration request
+    When User sends company registration request
     Then The response should be successful
     And The user should receive the following messages
       | ENGLISH | We've sent you an email. Open it up to activate your account. If you do not receive that email within 1 hour, please email support@monederobingo.com |

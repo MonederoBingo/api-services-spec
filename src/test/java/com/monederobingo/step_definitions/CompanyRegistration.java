@@ -11,49 +11,48 @@ public class CompanyRegistration {
         this.companyRegistrationRequest = companyRegistrationRequest;
     }
 
-    @Given("^User provides correct registration information$")
-    public void userProvidesCorrectRegistrationInformation() {
-
+    @Given("^User provides correct company registration information$")
+    public void userProvidesCorrectCompanyRegistrationInformation() {
     }
 
     @Given("^User provides empty company name$")
-    public void userProvidesEmptyCompanyName() throws Throwable {
+    public void userProvidesEmptyCompanyName() {
         companyRegistrationRequest.withCompanyName("");
     }
 
     @Given("^User provides empty email$")
-    public void userProvidesEmptyEmail() throws Throwable {
+    public void userProvidesEmptyEmail() {
         companyRegistrationRequest.withEmail("");
     }
 
     @Given("^User provides existent email$")
-    public void userProvidesExistentEmail() throws Throwable {
+    public void userProvidesExistentEmail() {
         new CompanyRegistrationRequest().withEmail("same@email.com").send();
         companyRegistrationRequest.withEmail("same@email.com");
     }
 
     @Given("^User provides invalid email$")
-    public void userProvidesInvalidEmail() throws Throwable {
+    public void userProvidesInvalidEmail() {
         companyRegistrationRequest.withEmail("invalid@email@.com.");
     }
 
     @Given("^User provides empty language$")
-    public void userProvidesEmptyLanguage() throws Throwable {
+    public void userProvidesEmptyLanguage() {
         companyRegistrationRequest.withLanguage("");
     }
 
     @Given("^User provides empty password$")
-    public void userProvidesEmptyPassword() throws Throwable {
+    public void userProvidesEmptyPassword() {
         companyRegistrationRequest.withPassword("");
     }
 
     @Given("^User provides empty password confirmation$")
-    public void userProvidesEmptyPasswordConfirmation() throws Throwable {
+    public void userProvidesEmptyPasswordConfirmation() {
         companyRegistrationRequest.withPasswordConfirmation("");
     }
 
     @Given("^User provides different password confirmation$")
-    public void userProvidesDifferentPasswordConfirmation() throws Throwable {
+    public void userProvidesDifferentPasswordConfirmation() {
         companyRegistrationRequest.withPassword("password");
         companyRegistrationRequest.withPasswordConfirmation("different_password");
     }

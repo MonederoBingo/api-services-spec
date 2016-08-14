@@ -10,34 +10,27 @@ import java.util.Map;
 
 import static com.monederobingo.api.client.model.Language.ENGLISH;
 import static com.monederobingo.api.client.model.Language.SPANISH;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-public class ServiceResultVerifier
-{
+public class ServiceResultVerifier {
     private final ServiceResultHolder serviceResultHolder;
 
-    public ServiceResultVerifier(ServiceResultHolder serviceResultHolder)
-    {
+    public ServiceResultVerifier(ServiceResultHolder serviceResultHolder) {
         this.serviceResultHolder = serviceResultHolder;
     }
 
     @Then("^The response should be successful$")
-    public void theResponseShouldBeSuccessful() throws Throwable
-    {
+    public void theResponseShouldBeSuccessful() {
         assertTrue(serviceResultHolder.get().isSuccess());
     }
 
     @Then("^The response should be not successful$")
-    public void theResponseShouldBeNotSuccessful() throws Throwable
-    {
+    public void theResponseShouldBeNotSuccessful() {
         assertFalse(serviceResultHolder.get().isSuccess());
     }
 
     @And("^The user should receive the following messages$")
-    public void theUserShouldReceiveTheFollowingMessages(Map<Language, String> expectedMessages) throws Throwable
-    {
+    public void theUserShouldReceiveTheFollowingMessages(Map<Language, String> expectedMessages) {
         assertEquals(expectedMessages.get(ENGLISH), serviceResultHolder.get().getMessage());
         assertEquals(expectedMessages.get(ENGLISH), serviceResultHolder.get().getTranslation(ENGLISH));
         assertEquals(expectedMessages.get(SPANISH), serviceResultHolder.get().getTranslation(SPANISH));

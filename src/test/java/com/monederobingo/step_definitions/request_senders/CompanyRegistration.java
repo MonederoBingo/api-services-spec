@@ -5,20 +5,17 @@ import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrati
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
 import cucumber.api.java.en.When;
 
-public class CompanyRegistration
-{
+public class CompanyRegistration {
     private final ServiceResultHolder serviceResultHolder;
     private final CompanyRegistrationRequest companyRegistrationRequest;
 
-    public CompanyRegistration(ServiceResultHolder serviceResultHolder, CompanyRegistrationRequest companyRegistrationRequest)
-    {
+    public CompanyRegistration(ServiceResultHolder serviceResultHolder, CompanyRegistrationRequest companyRegistrationRequest) {
         this.serviceResultHolder = serviceResultHolder;
         this.companyRegistrationRequest = companyRegistrationRequest;
     }
 
-    @When("^User sends registration request$")
-    public void userSendRegistrationRequest() throws Throwable
-    {
+    @When("^User sends company registration request$")
+    public void userSendCompanyRegistrationRequest() throws Throwable {
         serviceResultHolder.set(companyRegistrationRequest.send());
     }
 }

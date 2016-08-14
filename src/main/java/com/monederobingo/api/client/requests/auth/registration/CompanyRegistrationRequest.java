@@ -14,10 +14,9 @@ public class CompanyRegistrationRequest extends AuthRequest {
 
     @Override
     protected String getRequestBody() {
-        String urlImageLogo = "images/logo.png";
         return new JSONObject()
                 .put("companyName", companyName)
-                .put("urlImageLogo", urlImageLogo)
+                .put("urlImageLogo", "images/logo.png")
                 .put("username", username)
                 .put("email", email)
                 .put("password", password)

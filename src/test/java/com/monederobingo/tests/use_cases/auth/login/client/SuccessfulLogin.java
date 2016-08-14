@@ -22,7 +22,7 @@ public class SuccessfulLogin extends UseCase
     @Before
     public void setUp() {
         final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-        clientRegistrationRequest.setPhoneNumber(_phoneNumber);
+        clientRegistrationRequest.withPhoneNumber(_phoneNumber);
         serviceResult = clientRegistrationRequest.send();
         _smsKey = serviceResult.getObject();
     }

@@ -22,7 +22,7 @@ public class ClientRegistrationRequest extends AuthRequest {
         return "client/";
     }
 
-    public ClientRegistrationRequest setPhoneNumber(String phone) {
+    public ClientRegistrationRequest withPhoneNumber(String phone) {
         this.phoneNumber = phone;
         return this;
     }

@@ -22,7 +22,7 @@ public class InvalidPhoneNumber extends UseCase
     @Before
     public void setUp() {
         final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-        clientRegistrationRequest.setPhoneNumber("9991234567");
+        clientRegistrationRequest.withPhoneNumber("9991234567");
         serviceResult = clientRegistrationRequest.send();
         _smsKey = serviceResult.getObject();
     }
