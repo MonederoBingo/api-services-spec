@@ -1,7 +1,7 @@
 package com.monederobingo.tests.use_cases.auth.login.company;
 
 import com.monederobingo.api.client.model.Language;
-import com.monederobingo.api.client.requests.auth.login.CompanyUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
 import com.monederobingo.api.client.requests.auth.activation.ActivateCompanyUserRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import com.monederobingo.tests.use_cases.UseCase;
@@ -34,7 +34,7 @@ public class SuccessfulLogin extends UseCase
 
     @Test
     public void test() {
-        serviceResult = new CompanyUserLoginRequest()
+        serviceResult = new CompanyLoginRequest()
                 .setEmail(email)
                 .setPassword(password)
                 .send();

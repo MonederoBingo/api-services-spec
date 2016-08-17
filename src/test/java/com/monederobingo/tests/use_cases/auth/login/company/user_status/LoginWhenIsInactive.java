@@ -3,7 +3,7 @@ package com.monederobingo.tests.use_cases.auth.login.company.user_status;
 import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.auth.login.CompanyUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public class LoginWhenIsInactive extends UseCase
 
     @Test
     public void test() {
-        serviceResult = new CompanyUserLoginRequest()
+        serviceResult = new CompanyLoginRequest()
                 .setEmail(email)
                 .setPassword(password)
                 .send();

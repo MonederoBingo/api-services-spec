@@ -4,7 +4,7 @@ import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.activation.ActivateCompanyUserRequest;
-import com.monederobingo.api.client.requests.auth.login.CompanyUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class WrongEmail extends UseCase
 
     @Test
     public void test() {
-        serviceResult = new CompanyUserLoginRequest()
+        serviceResult = new CompanyLoginRequest()
                 .setEmail("DIFFERENT_EMAIL@DIFFERENT.COM")
                 .setPassword(password)
                 .send();

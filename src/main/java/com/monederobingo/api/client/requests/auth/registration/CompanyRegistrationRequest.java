@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class CompanyRegistrationRequest extends AuthRequest {
     private String companyName = "company name";
-    private String email = "test@lealpoints.com";
+    private String email = "test@monederobingo.com";
     private String password = "Pa$$w0rd";
     private String passwordConfirmation = "Pa$$w0rd";
     private String language = "en";

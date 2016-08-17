@@ -4,7 +4,7 @@ import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.activation.ActivateCompanyUserRequest;
-import com.monederobingo.api.client.requests.auth.login.CompanyUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,10 +32,10 @@ public class WrongPassword extends UseCase
 
     @Test
     public void test() {
-        CompanyUserLoginRequest companyUserLoginRequest = new CompanyUserLoginRequest()
+        CompanyLoginRequest companyLoginRequest = new CompanyLoginRequest()
                 .setEmail(email)
                 .setPassword("DIFFERENT_PASSWORD");
-        serviceResult = companyUserLoginRequest.send();
+        serviceResult = companyLoginRequest.send();
         runAssertions(serviceResult);
     }
 

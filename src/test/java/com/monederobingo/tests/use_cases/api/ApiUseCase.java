@@ -3,7 +3,7 @@ package com.monederobingo.tests.use_cases.api;
 import com.monederobingo.api.client.api_client.ApiUser;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.activation.ActivateCompanyUserRequest;
-import com.monederobingo.api.client.requests.auth.login.CompanyUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import com.monederobingo.tests.use_cases.UseCase;
 import org.json.JSONObject;
@@ -45,7 +45,7 @@ public abstract class ApiUseCase extends UseCase
 
     private ServiceResult activateAndLoginUser(ServiceResult serviceResultResult) {
         new ActivateCompanyUserRequest().send(serviceResultResult.getExtraInfo());
-        return new CompanyUserLoginRequest()
+        return new CompanyLoginRequest()
                 .setEmail(email)
                 .setPassword("Password")
                 .send();
