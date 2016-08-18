@@ -7,3 +7,5 @@ Feature: Successful Company Login
     Given User provides correct company login information
     When User sends company login request
     Then The response should be successful
+    And The user should be active
+    And The user should not need to change password

@@ -3,7 +3,10 @@ package com.monederobingo.api.client.model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static java.util.Optional.ofNullable;
+
 public class ServiceResult {
+    public static final ServiceResult NULL = new ServiceResult(false, ServiceMessage.NULL, "", "");
     private final boolean success;
     private final ServiceMessage serviceMessage;
     private String extraInfo;
@@ -30,7 +33,8 @@ public class ServiceResult {
     }
 
     public JSONObject getJSONObject() {
-        return new JSONObject(object);
+        String source = ofNullable(object).orElse("");
+        return new JSONObject(source);
     }
 
     public JSONArray getJSONArray() {

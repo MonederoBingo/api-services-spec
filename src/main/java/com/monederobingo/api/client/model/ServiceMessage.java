@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceMessage {
+    public static final ServiceMessage NULL = new ServiceMessage("");
     private final String message;
     private final Map<Language, String> translations = new HashMap<>();
 
