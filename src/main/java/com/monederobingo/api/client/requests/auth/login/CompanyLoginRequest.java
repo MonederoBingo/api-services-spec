@@ -4,8 +4,7 @@ import com.monederobingo.api.client.api_client.HttpMethod;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
-public class CompanyLoginRequest extends AuthRequest
-{
+public class CompanyLoginRequest extends AuthRequest {
     private String email = "test@monederobingo.com";
     private String password = "Pa$$w0rd";
 
@@ -27,13 +26,17 @@ public class CompanyLoginRequest extends AuthRequest
         return "company/login";
     }
 
-    public CompanyLoginRequest setEmail(String email) {
+    public CompanyLoginRequest withEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public CompanyLoginRequest setPassword(String password) {
+    public CompanyLoginRequest withPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public CompanyLoginRequest andPassword(String password) {
+        return withPassword(password);
     }
 }

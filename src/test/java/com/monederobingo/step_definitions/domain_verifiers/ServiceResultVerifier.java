@@ -24,8 +24,8 @@ public class ServiceResultVerifier {
         assertTrue(serviceResultHolder.get().isSuccess());
     }
 
-    @Then("^The response should be not successful$")
-    public void theResponseShouldBeNotSuccessful() {
+    @Then("^The response should not be successful$")
+    public void theResponseShouldNotBeSuccessful() {
         assertFalse(serviceResultHolder.get().isSuccess());
     }
 

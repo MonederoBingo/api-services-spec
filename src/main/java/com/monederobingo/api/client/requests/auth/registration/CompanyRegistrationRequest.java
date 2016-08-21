@@ -1,7 +1,7 @@
 package com.monederobingo.api.client.requests.auth.registration;
 
-import com.monederobingo.api.client.requests.auth.AuthRequest;
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
 public class CompanyRegistrationRequest extends AuthRequest {
@@ -43,6 +43,10 @@ public class CompanyRegistrationRequest extends AuthRequest {
     public CompanyRegistrationRequest withPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public CompanyRegistrationRequest andPassword(String password) {
+        return withPassword(password);
     }
 
     public CompanyRegistrationRequest withPasswordConfirmation(String passwordConfirmation) {

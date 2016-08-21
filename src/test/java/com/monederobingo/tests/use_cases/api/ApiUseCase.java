@@ -46,8 +46,8 @@ public abstract class ApiUseCase extends UseCase
     private ServiceResult activateAndLoginUser(ServiceResult serviceResultResult) {
         new ActivateCompanyUserRequest().send(serviceResultResult.getExtraInfo());
         return new CompanyLoginRequest()
-                .setEmail(email)
-                .setPassword("Password")
+                .withEmail(email)
+                .andPassword("Password")
                 .send();
     }
 
