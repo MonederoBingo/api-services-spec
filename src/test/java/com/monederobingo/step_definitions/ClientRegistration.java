@@ -2,27 +2,17 @@
 package com.monederobingo.step_definitions;
 
 import com.monederobingo.api.client.requests.auth.registration.ClientRegistrationRequest;
-import cucumber.api.java.en.Given;
+import cucumber.api.java8.En;
 
-public class ClientRegistration {
+public class ClientRegistration implements En {
 
-    private final ClientRegistrationRequest clientRegistrationRequest;
-
-    public ClientRegistration(ClientRegistrationRequest clientRegistrationRequest) {
-        this.clientRegistrationRequest = clientRegistrationRequest;
+     public ClientRegistration(ClientRegistrationRequest clientRegistrationRequest) {
+        Given("^User provides correct client registration information$", () -> {
+        });
+        Given("^User provides existent phone number$", () -> {
+            new ClientRegistrationRequest().withPhoneNumber("5551234567").send();
+            clientRegistrationRequest.withPhoneNumber("5551234567");
+        });
+        Given("^User provides the phone number \"([^\"]*)\"$", clientRegistrationRequest::withPhoneNumber);
     }
-
-    @Given("^User provides correct client registration information$")
-    public void userProvidesCorrectClientRegistrationInformation() {
-    }
-
-    @Given("^User provides existent phone number$")
-    public void userProvidesExistentPhoneNumber() {
-        new ClientRegistrationRequest().withPhoneNumber("5551234567").send();
-        clientRegistrationRequest.withPhoneNumber("5551234567");
-    }
-
-    @Given("^User provides the phone number \"([^\"]*)\"$")
-    public void userProvidesThePhoneNumber(String phoneNumber) {
-        clientRegistrationRequest.withPhoneNumber(phoneNumber);    }
 }

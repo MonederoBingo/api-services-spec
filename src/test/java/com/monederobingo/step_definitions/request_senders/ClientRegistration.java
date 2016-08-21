@@ -3,19 +3,13 @@ package com.monederobingo.step_definitions.request_senders;
 
 import com.monederobingo.api.client.requests.auth.registration.ClientRegistrationRequest;
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
-import cucumber.api.java.en.When;
+import cucumber.api.java8.En;
 
-public class ClientRegistration {
-    private final ServiceResultHolder serviceResultHolder;
-    private final ClientRegistrationRequest clientRegistrationRequest;
+public class ClientRegistration implements En {
 
     public ClientRegistration(ServiceResultHolder serviceResultHolder, ClientRegistrationRequest clientRegistrationRequest) {
-        this.serviceResultHolder = serviceResultHolder;
-        this.clientRegistrationRequest = clientRegistrationRequest;
-    }
-
-    @When("^User sends client registration request$")
-    public void userSendsClientRegistrationRequest() throws Throwable {
-        serviceResultHolder.set(clientRegistrationRequest.send());
+        When("^User sends client registration request$", () ->
+                serviceResultHolder.set(clientRegistrationRequest.send())
+        );
     }
 }
