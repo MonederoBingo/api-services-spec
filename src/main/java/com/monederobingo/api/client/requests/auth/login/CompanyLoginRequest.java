@@ -1,12 +1,21 @@
 package com.monederobingo.api.client.requests.auth.login;
 
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
 public class CompanyLoginRequest extends AuthRequest {
     private String email = "test@monederobingo.com";
     private String password = "Pa$$w0rd";
+
+    public CompanyLoginRequest() {
+        super(ResultListener.NULL);
+    }
+
+    public CompanyLoginRequest(ResultListener resultListener) {
+        super(resultListener);
+    }
 
     @Override
     protected String getRequestBody() {

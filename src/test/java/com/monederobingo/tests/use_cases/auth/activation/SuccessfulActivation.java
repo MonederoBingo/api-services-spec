@@ -15,7 +15,6 @@ import static org.junit.Assert.assertTrue;
 
 public class SuccessfulActivation extends UseCase
 {
-
     private ServiceResult serviceResult;
 
     @Test

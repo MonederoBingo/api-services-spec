@@ -21,19 +21,19 @@ public class SuccessfulLogin extends UseCase
 
     @Before
     public void setUp() {
-        final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-        clientRegistrationRequest.withPhoneNumber(_phoneNumber);
-        serviceResult = clientRegistrationRequest.send();
-        _smsKey = serviceResult.getObject();
+//        final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
+//        clientRegistrationRequest.withPhoneNumber(_phoneNumber);
+//        serviceResult = clientRegistrationRequest.send();
+//        _smsKey = serviceResult.getObject();
     }
 
     @Test
     public void test() {
-        final ServiceResult serviceResult = new ClientUserLoginRequest()
-                .setPhoneNumber(_phoneNumber)
-                .setSmsKey(_smsKey)
-                .send();
-        runAssertions(serviceResult);
+//        final ServiceResult serviceResult = new ClientUserLoginRequest()
+//                .setPhoneNumber(_phoneNumber)
+//                .setSmsKey(_smsKey)
+//                .send();
+//        runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {

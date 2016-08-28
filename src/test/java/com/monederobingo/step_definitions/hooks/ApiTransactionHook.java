@@ -8,13 +8,23 @@ import cucumber.api.java.Before;
 
 public class ApiTransactionHook
 {
+    private final BeginTransactionRequest beginTransactionRequest;
+    private final RollbackTransactionRequest rollbackTransactionRequest;
+
+    public ApiTransactionHook(BeginTransactionRequest beginTransactionRequest,
+                              RollbackTransactionRequest rollbackTransactionRequest) {
+
+        this.beginTransactionRequest = beginTransactionRequest;
+        this.rollbackTransactionRequest = rollbackTransactionRequest;
+    }
+
     @Before
     public final void baseSetUp() {
-        new BeginTransactionRequest().send();
+        beginTransactionRequest.send();
     }
 
     @After
     public final void baseTearDown() {
-        new RollbackTransactionRequest().send();
+        rollbackTransactionRequest.send();
     }
 }

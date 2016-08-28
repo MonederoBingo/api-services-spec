@@ -10,7 +10,7 @@ public class ClientRegistration implements En {
         Given("^User provides correct client registration information$", () -> {
         });
         Given("^User provides existent phone number$", () -> {
-            new ClientRegistrationRequest().withPhoneNumber("5551234567").send();
+            clientRegistrationRequest.withPhoneNumber("5551234567").send();
             clientRegistrationRequest.withPhoneNumber("5551234567");
         });
         Given("^User provides the phone number \"([^\"]*)\"$", clientRegistrationRequest::withPhoneNumber);

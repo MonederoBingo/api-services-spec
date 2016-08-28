@@ -4,17 +4,26 @@ import com.monederobingo.api.client.api_client.ApiClient;
 import com.monederobingo.api.client.api_client.HttpMethod;
 import com.monederobingo.api.client.api_client.HttpRequestData;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.util.ParserUtil;
+import com.monederobingo.api.client.requests.ResultListener;
+
+import static com.monederobingo.api.client.util.ParserUtil.toServiceResult;
 
 public abstract class AuthRequest {
 
-    private String _urlParameters;
+    private String urlParameters;
+    private ResultListener resultListener;
+
+    public AuthRequest(ResultListener resultListener) {
+        this.resultListener = resultListener;
+    }
 
     public ServiceResult send(String urlParameters) {
-        _urlParameters = urlParameters;
+        this.urlParameters = urlParameters;
         final HttpRequestData httpRequestData = getHttpRequestData();
         final String restResponse = ApiClient.getRestResponse(httpRequestData);
-        return ParserUtil.toServiceResult(restResponse);
+        ServiceResult serviceResult = toServiceResult(restResponse);
+        resultListener.set(serviceResult);
+        return serviceResult;
     }
 
     public ServiceResult send() {
@@ -25,7 +34,7 @@ public abstract class AuthRequest {
         return new HttpRequestData()
                 .setHttpMethod(getHttpMethod())
                 .setBody(getRequestBody())
-                .setUrlPath(getUrlPath() + _urlParameters);
+                .setUrlPath(getUrlPath() + urlParameters);
     }
 
     protected abstract String getRequestBody();

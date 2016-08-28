@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         plugin = { "junit:output" },
         snippets = SnippetType.CAMELCASE,
         glue = { "com.monederobingo.step_definitions" },
-        features = { "src/features" },
+        features = { "src/features/" },
         monochrome = true)
 public class TestFeatures
 {

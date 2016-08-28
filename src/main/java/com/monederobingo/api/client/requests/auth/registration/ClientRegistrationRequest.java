@@ -1,11 +1,20 @@
 package com.monederobingo.api.client.requests.auth.registration;
 
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
 public class ClientRegistrationRequest extends AuthRequest {
     private String phoneNumber = "9991112233";
+
+    public ClientRegistrationRequest() {
+        super(ResultListener.NULL);
+    }
+
+    public ClientRegistrationRequest(ResultListener resultListener) {
+        super(resultListener);
+    }
 
     @Override
     protected String getRequestBody() {

@@ -1,6 +1,7 @@
 package com.monederobingo.api.client.requests.auth.login;
 
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
@@ -9,6 +10,14 @@ public class ClientUserLoginRequest extends AuthRequest {
     private String smsKey = "123456";
     private String email = "test@lealpoints.com";
     private String password = "Password";
+
+    public ClientUserLoginRequest() {
+        super(ResultListener.NULL);
+    }
+
+    public ClientUserLoginRequest(ResultListener resultListener) {
+        super(resultListener);
+    }
 
     @Override
     protected String getRequestBody() {

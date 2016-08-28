@@ -1,6 +1,7 @@
 package com.monederobingo.api.client.requests.auth.registration;
 
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
@@ -11,6 +12,14 @@ public class CompanyRegistrationRequest extends AuthRequest {
     private String passwordConfirmation = "Pa$$w0rd";
     private String language = "en";
     private String username = "Admin";
+
+    public CompanyRegistrationRequest() {
+        super(ResultListener.NULL);
+    }
+
+    public CompanyRegistrationRequest(ResultListener resultListener) {
+        super(resultListener);
+    }
 
     @Override
     protected String getRequestBody() {
