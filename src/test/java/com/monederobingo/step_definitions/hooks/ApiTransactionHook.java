@@ -1,4 +1,3 @@
-/* Copyright 2016 Sabre Holdings */
 package com.monederobingo.step_definitions.hooks;
 
 import com.monederobingo.api.client.requests.api.transactions.BeginTransactionRequest;

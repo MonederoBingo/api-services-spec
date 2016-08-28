@@ -1,10 +1,10 @@
-/* Copyright 2016 Sabre Holdings */
+
 package com.monederobingo.step_definitions.domain_verifiers;
 
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
+import cucumber.api.DataTable;
+import cucumber.api.java8.En;
 
 import java.util.Map;
 
@@ -12,27 +12,20 @@ import static com.monederobingo.api.client.model.Language.ENGLISH;
 import static com.monederobingo.api.client.model.Language.SPANISH;
 import static org.junit.Assert.*;
 
-public class ServiceResultVerifier {
-    private final ServiceResultHolder serviceResultHolder;
+public class ServiceResultVerifier implements En {
 
-    public ServiceResultVerifier(ServiceResultHolder serviceResultHolder) {
-        this.serviceResultHolder = serviceResultHolder;
-    }
+    public ServiceResultVerifier(ServiceResultHolder serviceResult) {
+        Then("^The response should be successful$", () ->
+                assertTrue(serviceResult.get().isSuccess()));
 
-    @Then("^The response should be successful$")
-    public void theResponseShouldBeSuccessful() {
-        assertTrue(serviceResultHolder.get().isSuccess());
-    }
+        Then("^The response should not be successful$", () ->
+                assertFalse(serviceResult.get().isSuccess()));
 
-    @Then("^The response should not be successful$")
-    public void theResponseShouldNotBeSuccessful() {
-        assertFalse(serviceResultHolder.get().isSuccess());
-    }
-
-    @And("^The user should receive the following messages$")
-    public void theUserShouldReceiveTheFollowingMessages(Map<Language, String> expectedMessages) {
-        assertEquals(expectedMessages.get(ENGLISH), serviceResultHolder.get().getMessage());
-        assertEquals(expectedMessages.get(ENGLISH), serviceResultHolder.get().getTranslation(ENGLISH));
-        assertEquals(expectedMessages.get(SPANISH), serviceResultHolder.get().getTranslation(SPANISH));
+        And("^The user should receive the following messages$", (expectedMessages) -> {
+            Map<Language, String> messages = ((DataTable) expectedMessages).asMap(Language.class, String.class);
+            assertEquals(messages.get(ENGLISH), serviceResult.get().getMessage());
+            assertEquals(messages.get(ENGLISH), serviceResult.get().getTranslation(ENGLISH));
+            assertEquals(messages.get(SPANISH), serviceResult.get().getTranslation(SPANISH));
+        });
     }
 }

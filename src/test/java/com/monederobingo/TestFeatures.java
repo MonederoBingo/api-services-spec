@@ -1,4 +1,4 @@
-/* Copyright 2016 Sabre Holdings */
+
 package com.monederobingo;
 
 import cucumber.api.CucumberOptions;
