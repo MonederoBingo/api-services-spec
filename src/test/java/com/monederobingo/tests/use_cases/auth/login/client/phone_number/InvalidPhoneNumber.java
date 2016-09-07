@@ -1,10 +1,10 @@
 package com.monederobingo.tests.use_cases.auth.login.client.phone_number;
 
-import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.auth.login.ClientUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.ClientLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.ClientRegistrationRequest;
+import com.monederobingo.tests.use_cases.UseCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,8 +38,8 @@ public class InvalidPhoneNumber extends UseCase
     }
 
     private void testPhoneNumber(String phoneNumber) {
-        serviceResult = new ClientUserLoginRequest()
-                .setPhoneNumber(phoneNumber)
+        serviceResult = new ClientLoginRequest()
+                .withPhoneNumber(phoneNumber)
                 .setSmsKey(_smsKey)
                 .send();
         runAssertions(serviceResult);

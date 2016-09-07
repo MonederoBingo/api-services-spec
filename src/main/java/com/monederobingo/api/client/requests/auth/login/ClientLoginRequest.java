@@ -5,17 +5,17 @@ import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.auth.AuthRequest;
 import org.json.JSONObject;
 
-public class ClientUserLoginRequest extends AuthRequest {
+public class ClientLoginRequest extends AuthRequest {
     private String phoneNumber = "9991112233";
     private String smsKey = "123456";
     private String email = "test@lealpoints.com";
     private String password = "Password";
 
-    public ClientUserLoginRequest() {
+    public ClientLoginRequest() {
         super(ResultListener.NULL);
     }
 
-    public ClientUserLoginRequest(ResultListener resultListener) {
+    public ClientLoginRequest(ResultListener resultListener) {
         super(resultListener);
     }
 
@@ -39,22 +39,22 @@ public class ClientUserLoginRequest extends AuthRequest {
         return "client/login";
     }
 
-    public ClientUserLoginRequest setPhoneNumber(String phoneNumber) {
+    public ClientLoginRequest withPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
 
-    public ClientUserLoginRequest setSmsKey(String smsKey) {
+    public ClientLoginRequest setSmsKey(String smsKey) {
         this.smsKey = smsKey;
         return this;
     }
 
-    public ClientUserLoginRequest setEmail(String email) {
+    public ClientLoginRequest setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public ClientUserLoginRequest setPassword(String password) {
+    public ClientLoginRequest setPassword(String password) {
         this.password = password;
         return this;
     }

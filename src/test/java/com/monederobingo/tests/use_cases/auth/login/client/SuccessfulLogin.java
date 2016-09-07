@@ -1,10 +1,10 @@
 package com.monederobingo.tests.use_cases.auth.login.client;
 
-import com.monederobingo.tests.use_cases.UseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.auth.login.ClientUserLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.ClientLoginRequest;
 import com.monederobingo.api.client.requests.auth.registration.ClientRegistrationRequest;
+import com.monederobingo.tests.use_cases.UseCase;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,19 +21,19 @@ public class SuccessfulLogin extends UseCase
 
     @Before
     public void setUp() {
-//        final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
-//        clientRegistrationRequest.withPhoneNumber(_phoneNumber);
-//        serviceResult = clientRegistrationRequest.send();
-//        _smsKey = serviceResult.getObject();
+        final ClientRegistrationRequest clientRegistrationRequest = new ClientRegistrationRequest();
+        clientRegistrationRequest.withPhoneNumber(_phoneNumber);
+        serviceResult = clientRegistrationRequest.send();
+        _smsKey = serviceResult.getObject();
     }
 
     @Test
     public void test() {
-//        final ServiceResult serviceResult = new ClientUserLoginRequest()
-//                .setPhoneNumber(_phoneNumber)
-//                .setSmsKey(_smsKey)
-//                .send();
-//        runAssertions(serviceResult);
+        final ServiceResult serviceResult = new ClientLoginRequest()
+                .withPhoneNumber(_phoneNumber)
+                .setSmsKey(_smsKey)
+                .send();
+        runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {

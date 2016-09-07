@@ -21,8 +21,8 @@ public class ServiceResultVerifier implements En {
         Then("^The response should not be successful$", () ->
                 assertFalse(serviceResult.get().isSuccess()));
 
-        And("^The user should receive the following messages$", (expectedMessages) -> {
-            Map<Language, String> messages = ((DataTable) expectedMessages).asMap(Language.class, String.class);
+        this.<DataTable>And("^The user should receive the following messages$", (expectedMessages) -> {
+            Map<Language, String> messages = expectedMessages.asMap(Language.class, String.class);
             assertEquals(messages.get(ENGLISH), serviceResult.get().getMessage());
             assertEquals(messages.get(ENGLISH), serviceResult.get().getTranslation(ENGLISH));
             assertEquals(messages.get(SPANISH), serviceResult.get().getTranslation(SPANISH));
