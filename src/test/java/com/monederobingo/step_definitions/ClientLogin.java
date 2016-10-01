@@ -23,5 +23,9 @@ public class ClientLogin implements En {
             assertTrue(serviceResult.getJSONObject().has("apiKey"));
             assertNotEquals("", serviceResult.getJSONObject().getString("apiKey"));
         });
+
+        Given("^User provides invalid phone number$", () ->
+                clientLoginRequest
+                        .withPhoneNumber("INVALID"));
     }
 }
