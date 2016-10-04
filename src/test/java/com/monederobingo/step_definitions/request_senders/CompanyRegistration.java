@@ -17,5 +17,8 @@ public class CompanyRegistration implements En {
 
         And("^User sends activation request$", () ->
                 activateCompanyUserRequest.send(serviceResult.get().getExtraInfo()));
+
+        And("^User sends wrong activation request$", () ->
+                activateCompanyUserRequest.send("DIFFERENT_ACTIVATION_KEY"));
     }
 }
