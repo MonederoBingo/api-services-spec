@@ -2,6 +2,7 @@ package com.monederobingo.api.client.requests.api.promotions;
 
 import com.monederobingo.api.client.api_client.ApiUser;
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.api.ApiRequest;
 import org.json.JSONObject;
 
@@ -10,8 +11,8 @@ public class ApplyPromotionRequest extends ApiRequest
     private String phoneNumber = "6661234567";
     private long promotionConfigurationId;
 
-    public ApplyPromotionRequest(ApiUser apiUser) {
-        super(apiUser);
+    public ApplyPromotionRequest(ApiUser apiUser, ResultListener resultListener) {
+        super(apiUser, resultListener);
     }
 
     @Override

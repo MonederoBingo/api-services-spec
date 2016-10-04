@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.points.awarding.phone_number;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.points.PointsAwardingRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -18,10 +17,10 @@ public class NonExistentPhoneNumber extends ApiUseCase
 
     @Test
     public void test() {
-        serviceResult = new PointsAwardingRequest(getApiUser())
-                .setPhoneNumber("1234567890")
-                .send();
-        runAssertions(serviceResult);
+//        serviceResult = new PointsAwardingRequest(getApiUser())
+//                .setPhoneNumber("1234567890")
+//                .send();
+//        runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {

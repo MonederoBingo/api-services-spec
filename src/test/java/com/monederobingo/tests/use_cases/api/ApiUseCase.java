@@ -26,7 +26,7 @@ public abstract class ApiUseCase extends UseCase
         final JSONObject jsonObject = loginResult.getJSONObject();
         final String apiKey = jsonObject.getString("apiKey");
         final Integer companyId = jsonObject.getInt("companyId");
-        return new ApiUser(apiKey, String.valueOf(companyId));
+        return new ApiUser();
     }
 
     private ServiceResult registerCompany() {
@@ -55,11 +55,11 @@ public abstract class ApiUseCase extends UseCase
         return apiUser;
     }
 
-    public String getUsername() {
+    protected String getUsername() {
         return username;
     }
 
-    public String getEmail() {
+    protected String getEmail() {
         return email;
     }
 }

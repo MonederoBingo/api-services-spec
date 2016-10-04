@@ -1,10 +1,8 @@
 package com.monederobingo.tests.use_cases.api.notifications.sms.mobile_app_advertising;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.notifications.sms.SendMobileAppAdRequest;
-import com.monederobingo.api.client.requests.api.points.PointsAwardingRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,22 +14,22 @@ import static org.junit.Assert.assertNotNull;
 
 public class SuccessfulSending extends ApiUseCase
 {
-    private ServiceResult serviceResult;
     final String phoneNumber = "6823133323";
+    private ServiceResult serviceResult;
 
     @Before
     public void setUp() {
-        new PointsAwardingRequest(getApiUser())
-                .setPhoneNumber(phoneNumber)
-                .send();
+//        new PointsAwardingRequest(getApiUser())
+//                .setPhoneNumber(phoneNumber)
+//                .send();
     }
 
     @Test
     public void test() {
-        SendMobileAppAdRequest sendMobileAppAdRequest = new SendMobileAppAdRequest(getApiUser());
-        sendMobileAppAdRequest.setPhoneNumber(phoneNumber);
-        serviceResult = sendMobileAppAdRequest.send();
-        runAssertions(serviceResult);
+//        SendMobileAppAdRequest sendMobileAppAdRequest = new SendMobileAppAdRequest(getApiUser());
+//        sendMobileAppAdRequest.setPhoneNumber(phoneNumber);
+//        serviceResult = sendMobileAppAdRequest.send();
+//        runAssertions(serviceResult);
     }
 
     private void runAssertions(ServiceResult serviceResult) {

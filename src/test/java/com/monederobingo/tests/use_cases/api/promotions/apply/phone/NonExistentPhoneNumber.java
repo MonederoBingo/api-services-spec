@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.promotions.apply.phone;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.promotions.ApplyPromotionRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -18,10 +17,10 @@ public class NonExistentPhoneNumber extends ApiUseCase
 
     @Test
     public void test() {
-        ApplyPromotionRequest applyPromotionRequest = new ApplyPromotionRequest(getApiUser());
-        applyPromotionRequest.setPhoneNumber("6661234567");
-        applyPromotionRequest.setPromotionConfigurationId(0);
-        serviceResult = applyPromotionRequest.send();
+//        ApplyPromotionRequest applyPromotionRequest = new ApplyPromotionRequest(getApiUser());
+//        applyPromotionRequest.setPhoneNumber("6661234567");
+//        applyPromotionRequest.setPromotionConfigurationId(0);
+//        serviceResult = applyPromotionRequest.send();
         runAssertions(serviceResult);
     }
 

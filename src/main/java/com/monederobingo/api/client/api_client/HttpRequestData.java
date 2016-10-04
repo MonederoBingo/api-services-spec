@@ -5,7 +5,7 @@ public class HttpRequestData {
     private HttpMethod httpMethod = HttpMethod.GET;
     private String body = "{}";
     private String urlPath = "";
-    private ApiUser apiUser = new ApiUser("", "0");
+    private ApiUser apiUser = new ApiUser();
 
     public HttpMethod getHttpMethod() {
         return httpMethod;

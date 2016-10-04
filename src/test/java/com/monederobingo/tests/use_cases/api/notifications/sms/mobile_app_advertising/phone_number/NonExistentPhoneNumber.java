@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.notifications.sms.mobile_app_advertising.phone_number;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.notifications.sms.SendMobileAppAdRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -17,7 +16,7 @@ public class NonExistentPhoneNumber extends ApiUseCase
 
     @Test
     public void test() {
-        serviceResult =  new SendMobileAppAdRequest(getApiUser()).send();
+//        serviceResult =  new SendMobileAppAdRequest(getApiUser()).send();
         runAssertions(serviceResult);
     }
 

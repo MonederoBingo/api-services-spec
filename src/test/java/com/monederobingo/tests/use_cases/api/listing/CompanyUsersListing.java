@@ -1,10 +1,8 @@
 package com.monederobingo.tests.use_cases.api.listing;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.users.CompanyUserListingRequest;
-import com.monederobingo.api.client.requests.api.users.CompanyUserRegistrationRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -21,15 +19,15 @@ public class CompanyUsersListing extends ApiUseCase
 
     @Before
     public void setUp() {
-        CompanyUserRegistrationRequest companyUserRegistrationRequest = new CompanyUserRegistrationRequest(getApiUser());
-        companyUserRegistrationRequest.setName("Username1");
-        companyUserRegistrationRequest.setEmail("username1@monederobingo.com");
-        companyUserRegistrationRequest.send();
+//        CompanyUserRegistrationRequest companyUserRegistrationRequest = new CompanyUserRegistrationRequest(getApiUser());
+//        companyUserRegistrationRequest.setName("Username1");
+//        companyUserRegistrationRequest.setEmail("username1@monederobingo.com");
+//        companyUserRegistrationRequest.send();
     }
 
     @Test
     public void test() {
-        serviceResult = new CompanyUserListingRequest(getApiUser()).send();
+//        serviceResult = new CompanyUserListingRequest(getApiUser()).send();
         runAssertions(serviceResult);
     }
 

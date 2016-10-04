@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.promotions.configuration;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.promotions.PromotionConfigurationRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -19,7 +18,7 @@ public class DefaultConfigurationGetting extends ApiUseCase
 
     @Test
     public void test() {
-        serviceResult = new PromotionConfigurationRequest(getApiUser()).send();
+        //  serviceResult = new PromotionConfigurationRequest(getApiUser()).send();
         runAssertions(serviceResult);
     }
 

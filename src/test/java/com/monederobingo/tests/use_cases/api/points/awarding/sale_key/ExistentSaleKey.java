@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.points.awarding.sale_key;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.points.PointsAwardingRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,12 +18,12 @@ public class ExistentSaleKey extends ApiUseCase
 
     @Before
     public void setUp() {
-        new PointsAwardingRequest(getApiUser()).send();
+//        new PointsAwardingRequest(getApiUser()).send();
     }
 
     @Test
     public void test() {
-        serviceResult = new PointsAwardingRequest(getApiUser()).send();
+//        serviceResult = new PointsAwardingRequest(getApiUser()).send();
         runAssertions(serviceResult);
     }
 

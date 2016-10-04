@@ -2,6 +2,7 @@ package com.monederobingo.api.client.requests.api.points;
 
 import com.monederobingo.api.client.api_client.ApiUser;
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.api.ApiRequest;
 import org.json.JSONObject;
 
@@ -12,8 +13,8 @@ public class PointsAwardingRequest extends ApiRequest
     private String saleKey = "ABC";
     private float saleAmount = 100;
 
-    public PointsAwardingRequest(ApiUser apiUser) {
-        super(apiUser);
+    public PointsAwardingRequest(ApiUser apiUser, ResultListener resultListener) {
+        super(apiUser, resultListener);
         companyId = Long.parseLong(apiUser.getCompanyId());
     }
 

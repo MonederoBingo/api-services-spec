@@ -1,9 +1,8 @@
 package com.monederobingo.tests.use_cases.api.points.awarding.phone_number;
 
-import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.api.client.model.ServiceResult;
-import com.monederobingo.api.client.requests.api.points.PointsAwardingRequest;
+import com.monederobingo.tests.use_cases.api.ApiUseCase;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -26,9 +25,9 @@ public class InvalidPhoneNumber extends ApiUseCase
     }
 
     private void testPhoneNumber(String phoneNumber) {
-        serviceResult = new PointsAwardingRequest(getApiUser())
-                .setPhoneNumber(phoneNumber)
-                .send();
+//        serviceResult = new PointsAwardingRequest(getApiUser())
+//                .setPhoneNumber(phoneNumber)
+//                .send();
         runAssertions(serviceResult);
     }
 

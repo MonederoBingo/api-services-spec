@@ -2,6 +2,7 @@ package com.monederobingo.api.client.requests.api.promotions;
 
 import com.monederobingo.api.client.api_client.ApiUser;
 import com.monederobingo.api.client.api_client.HttpMethod;
+import com.monederobingo.api.client.requests.ResultListener;
 import com.monederobingo.api.client.requests.api.ApiRequest;
 
 public class PromotionGetAvailableByClientRequest extends ApiRequest
@@ -9,8 +10,8 @@ public class PromotionGetAvailableByClientRequest extends ApiRequest
 
     private String phoneNumber = "6661234567";
 
-    public PromotionGetAvailableByClientRequest(ApiUser apiUser) {
-        super(apiUser);
+    public PromotionGetAvailableByClientRequest(ApiUser apiUser, ResultListener resultListener) {
+        super(apiUser, resultListener);
     }
 
     @Override
