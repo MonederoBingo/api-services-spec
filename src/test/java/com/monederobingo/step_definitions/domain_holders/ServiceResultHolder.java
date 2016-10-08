@@ -2,6 +2,7 @@ package com.monederobingo.step_definitions.domain_holders;
 
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.ResultListener;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ServiceResultHolder implements ResultListener {
@@ -17,5 +18,13 @@ public class ServiceResultHolder implements ResultListener {
 
     public JSONObject getJSONObject() {
         return serviceResult.getJSONObject();
+    }
+
+    public JSONArray getJSONArray() {
+        return serviceResult.getJSONArray();
+    }
+
+    public JSONObject getFirstArrayObject() {
+        return serviceResult.getJSONArray().getJSONObject(0);
     }
 }

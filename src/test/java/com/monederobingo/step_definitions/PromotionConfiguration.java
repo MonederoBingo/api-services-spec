@@ -3,8 +3,6 @@ package com.monederobingo.step_definitions;
 import com.monederobingo.api.client.requests.api.promotions.PromotionConfigurationRequest;
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
 import cucumber.api.java8.En;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import static org.junit.Assert.*;
 
@@ -15,16 +13,21 @@ public class PromotionConfiguration implements En {
 
         Given("^User sends get promotion configuration request$", promotionConfigurationRequest::send);
 
-        Then("^The user should get (\\d+) required points$", (Integer points) -> {
-            assertNotNull(serviceResult.get());
-            JSONArray jsonArray = serviceResult.get().getJSONArray();
-            assertNotNull(jsonArray);
-            assertEquals(1, jsonArray.length());
-            JSONObject jsonObject = jsonArray.getJSONObject(0);
-            assertTrue(jsonObject.has("companyId"));
-            assertTrue(jsonObject.has("promotionConfigurationId"));
-            assertEquals(1000, jsonObject.getInt("requiredPoints"));
-            assertEquals("10% off in your next purchase!", jsonObject.getString("description"));
-        });
+        Then("^Response should have only one configuration$",
+                () -> assertEquals(1, serviceResult.getJSONArray().length()));
+
+        And("^Response should have companyId$",
+                () -> assertTrue(serviceResult.getFirstArrayObject().has("companyId")));
+
+        And("^Response should have promotionConfigurationId",
+                () -> assertTrue(serviceResult.getFirstArrayObject().has("promotionConfigurationId")));
+
+        And("^The configuration should have this description: \"([^\"]*)\"$",
+                (String description) -> assertEquals(description,
+                        serviceResult.getFirstArrayObject().getString("description")));
+
+        And("^The configuration should have (\\d+) required points$",
+                (Integer points) ->
+                        assertEquals(1000, serviceResult.getFirstArrayObject().getInt("requiredPoints")));
     }
 }

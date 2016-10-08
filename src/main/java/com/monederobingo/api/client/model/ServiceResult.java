@@ -19,7 +19,6 @@ public class ServiceResult {
         this.extraInfo = extraInfo;
     }
 
-
     public boolean isSuccess() {
         return success;
     }

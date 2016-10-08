@@ -17,7 +17,7 @@ public class ApiTransactionHook
         this.rollbackTransactionRequest = rollbackTransactionRequest;
     }
 
-    @Before
+    @Before(order = 1)
     public final void baseSetUp() {
         beginTransactionRequest.send();
     }
