@@ -29,7 +29,7 @@ public class SuccessfulAwarding extends ApiUseCase
     @Override
     protected Map<Language, String> getExpectedMessages() {
         Map<Language, String> expectedMessages = new HashMap<>();
-        expectedMessages.put(Language.ENGLISH, "Points awarded: 100.0");
+        expectedMessages.put(Language.ENGLISH, "com.monederobingo.step_definitions.PointsConfiguration awarded: 100.0");
         expectedMessages.put(Language.SPANISH, "Puntos otorgados: 100.0");
         return expectedMessages;
     }

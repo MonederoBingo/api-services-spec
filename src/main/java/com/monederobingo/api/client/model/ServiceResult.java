@@ -47,4 +47,8 @@ public class ServiceResult {
     public String getExtraInfo() {
         return extraInfo;
     }
+
+    public boolean isObjectArray() {
+        return object.startsWith("[");
+    }
 }

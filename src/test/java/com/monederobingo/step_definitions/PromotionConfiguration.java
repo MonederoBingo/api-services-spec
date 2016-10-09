@@ -18,10 +18,10 @@ public class PromotionConfiguration implements En {
 
         And("^The configuration should have this description: \"([^\"]*)\"$",
                 (String description) -> assertEquals(description,
-                        serviceResult.getFirstObjectFromArray().getString("description")));
+                        serviceResult.getFirstObjectIfArray().getString("description")));
 
         And("^The configuration should have (\\d+) required points$",
                 (Integer points) ->
-                        assertEquals(1000, serviceResult.getFirstObjectFromArray().getInt("requiredPoints")));
+                        assertEquals(1000, serviceResult.getFirstObjectIfArray().getInt("requiredPoints")));
     }
 }

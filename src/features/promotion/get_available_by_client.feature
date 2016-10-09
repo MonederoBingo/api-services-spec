@@ -6,8 +6,8 @@ Feature: Getting promotions available by client
     And User sends request to get promotions available by client with phone number "6661234567"
     Then The response should be successful
     And The response should contain one promotion
-    And Response should have companyId
-    And Response should have promotionConfigurationId
+    And The response should have companyId
+    And The response should have promotionConfigurationId
     And The promotion should have 1000 required points
     And The promotion should have this description: "10% off in your next purchase!"
 
@@ -17,7 +17,6 @@ Feature: Getting promotions available by client
     Then The user should receive the following messages
       | ENGLISH | Client does not have available promotions. |
       | SPANISH | El cliente no alcanza ninguna promoción. |
-
 
   Scenario: Phone number does not exist
     Given User sends request to get promotions available by client with phone number "6661234567"
