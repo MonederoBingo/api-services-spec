@@ -2,7 +2,7 @@
 Feature: Getting promotions available by client
 
   Scenario: User gets promotions successfully
-    Given User sends points awarding request with phone number "6661234567" and 1000 amount
+    Given User sends points awarding request with phone number "6661234567", 1000 amount and sale key "ABC"
     And User sends request to get promotions available by client with phone number "6661234567"
     Then The response should be successful
     And The response should contain one promotion
@@ -12,7 +12,7 @@ Feature: Getting promotions available by client
     And The promotion should have this description: "10% off in your next purchase!"
 
   Scenario: No enough points for any promotion
-    Given User sends points awarding request with phone number "6661234567" and 10 amount
+    Given User sends points awarding request with phone number "6661234567", 10 amount and sale key "ABC"
     And User sends request to get promotions available by client with phone number "6661234567"
     Then The user should receive the following messages
       | ENGLISH | Client does not have available promotions. |

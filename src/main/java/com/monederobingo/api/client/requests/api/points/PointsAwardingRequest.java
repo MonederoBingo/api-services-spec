@@ -43,7 +43,7 @@ public class PointsAwardingRequest extends ApiRequest
         return this;
     }
 
-    public PointsAwardingRequest setSaleKey(String saleKey) {
+    public PointsAwardingRequest andSaleKey(String saleKey) {
         this.saleKey = saleKey;
         return this;
     }

@@ -2,7 +2,7 @@
 Feature: Applying promotion to client
 
   Scenario: Applying promotion to client successfully
-    Given User sends points awarding request with phone number "6661234567" and 1000 amount
+    Given User sends points awarding request with phone number "6661234567", 1000 amount and sale key "ABC"
     And User sends request to get promotions available by client with phone number "6661234567"
     And User sends request to apply promotion to phone number "6661234567"
     Then The response should be successful
@@ -11,7 +11,7 @@ Feature: Applying promotion to client
       | SPANISH | Promoción aplicada. |
 
   Scenario: Not enough points
-    Given User sends points awarding request with phone number "6661234567" and 10 amount
+    Given User sends points awarding request with phone number "6661234567", 10 amount and sale key "ABC"
     And User sends request to get promotions available by client with phone number "6661234567"
     Then The response should be successful
     And The user should receive the following messages

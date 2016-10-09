@@ -4,6 +4,7 @@ package com.monederobingo.step_definitions.domain_verifiers;
 import com.monederobingo.api.client.model.Language;
 import com.monederobingo.step_definitions.domain_holders.ServiceResultHolder;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java8.En;
 
 import java.util.Map;
@@ -36,5 +37,8 @@ public class ServiceResultVerifier implements En {
             assertEquals(messages.get(ENGLISH), serviceResult.get().getTranslation(ENGLISH));
             assertEquals(messages.get(SPANISH), serviceResult.get().getTranslation(SPANISH));
         });
+
+        And("^The response should have \"([^\"]*)\" as object$",
+                (String object) -> assertEquals("100.0", serviceResult.get().getObject()));
     }
 }
