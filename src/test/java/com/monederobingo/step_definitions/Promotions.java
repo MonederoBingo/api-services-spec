@@ -12,7 +12,7 @@ public class Promotions implements En {
     public Promotions(PromotionGetAvailableByClientRequest promotionGetAvailableByClientRequest,
                       ServiceResultHolder serviceResult) {
 
-        Given("^User sends request to get promotions available by client with phone number \"([^\"]*)\"$",
+        And("^User sends request to get promotions available by client with phone number \"([^\"]*)\"$",
                 (String phoneNumber) ->
                         promotionGetAvailableByClientRequest.withPhoneNumber(phoneNumber).send());
 
