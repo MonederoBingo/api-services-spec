@@ -21,13 +21,13 @@ public class SuccessApplying extends ApiUseCase
     @Before
     public void setUp() {
 //        PointsAwardingRequest pointsAwardingRequest = new PointsAwardingRequest(getApiUser());
-//        pointsAwardingRequest.setPhoneNumber(phoneNumber);
+//        pointsAwardingRequest.withPhoneNumber(phoneNumber);
 //        pointsAwardingRequest.setSaleAmount(1000);
 //        pointsAwardingRequest.send();
 //
 //        PromotionGetAvailableByClientRequest promotionGetAvailableByClientRequest =
 //                new PromotionGetAvailableByClientRequest(getApiUser());
-//        promotionGetAvailableByClientRequest.setPhoneNumber(phoneNumber);
+//        promotionGetAvailableByClientRequest.withPhoneNumber(phoneNumber);
 //        ServiceResult serviceResult = promotionGetAvailableByClientRequest.send();
 //        promotionConfigurationId = serviceResult.getJSONArray().getJSONObject(0).getLong("promotionConfigurationId");
     }
@@ -35,7 +35,7 @@ public class SuccessApplying extends ApiUseCase
     @Test
     public void test() {
 //        ApplyPromotionRequest applyPromotionRequest = new ApplyPromotionRequest(getApiUser());
-//        applyPromotionRequest.setPhoneNumber(phoneNumber);
+//        applyPromotionRequest.withPhoneNumber(phoneNumber);
 //        applyPromotionRequest.setPromotionConfigurationId(promotionConfigurationId);
 //        serviceResult = applyPromotionRequest.send();
 //        runAssertions(serviceResult);

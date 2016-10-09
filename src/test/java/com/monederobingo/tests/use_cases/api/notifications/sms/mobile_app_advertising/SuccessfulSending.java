@@ -20,14 +20,14 @@ public class SuccessfulSending extends ApiUseCase
     @Before
     public void setUp() {
 //        new PointsAwardingRequest(getApiUser())
-//                .setPhoneNumber(phoneNumber)
+//                .withPhoneNumber(phoneNumber)
 //                .send();
     }
 
     @Test
     public void test() {
 //        SendMobileAppAdRequest sendMobileAppAdRequest = new SendMobileAppAdRequest(getApiUser());
-//        sendMobileAppAdRequest.setPhoneNumber(phoneNumber);
+//        sendMobileAppAdRequest.withPhoneNumber(phoneNumber);
 //        serviceResult = sendMobileAppAdRequest.send();
 //        runAssertions(serviceResult);
     }

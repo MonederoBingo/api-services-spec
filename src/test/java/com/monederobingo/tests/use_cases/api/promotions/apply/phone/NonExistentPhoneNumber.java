@@ -18,7 +18,7 @@ public class NonExistentPhoneNumber extends ApiUseCase
     @Test
     public void test() {
 //        ApplyPromotionRequest applyPromotionRequest = new ApplyPromotionRequest(getApiUser());
-//        applyPromotionRequest.setPhoneNumber("6661234567");
+//        applyPromotionRequest.withPhoneNumber("6661234567");
 //        applyPromotionRequest.setPromotionConfigurationId(0);
 //        serviceResult = applyPromotionRequest.send();
         runAssertions(serviceResult);

@@ -1,5 +1,5 @@
 @authenticated_company_action
-Feature: Promotion configuration
+Feature: Getting Default Promotion configuration
 
   Scenario: User gets default promotion configuration
     Given User sends get promotion configuration request

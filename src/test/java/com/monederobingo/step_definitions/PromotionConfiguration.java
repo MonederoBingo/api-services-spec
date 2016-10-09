@@ -16,12 +16,6 @@ public class PromotionConfiguration implements En {
         Then("^Response should have only one configuration$",
                 () -> assertEquals(1, serviceResult.getJSONArray().length()));
 
-        And("^Response should have companyId$",
-                () -> assertTrue(serviceResult.getFirstArrayObject().has("companyId")));
-
-        And("^Response should have promotionConfigurationId",
-                () -> assertTrue(serviceResult.getFirstArrayObject().has("promotionConfigurationId")));
-
         And("^The configuration should have this description: \"([^\"]*)\"$",
                 (String description) -> assertEquals(description,
                         serviceResult.getFirstArrayObject().getString("description")));

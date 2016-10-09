@@ -26,7 +26,7 @@ public class InvalidPhoneNumber extends ApiUseCase
 
     private void testPhoneNumber(String phoneNumber) {
 //        serviceResult = new PointsAwardingRequest(getApiUser())
-//                .setPhoneNumber(phoneNumber)
+//                .withPhoneNumber(phoneNumber)
 //                .send();
         runAssertions(serviceResult);
     }

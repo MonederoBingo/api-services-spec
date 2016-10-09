@@ -29,7 +29,7 @@ public class PromotionGetAvailableByClientRequest extends ApiRequest
         return "/api/v1/promotion_configuration/" + getApiUser().getCompanyId() + "/" + phoneNumber ;
     }
 
-    public PromotionGetAvailableByClientRequest setPhoneNumber(String phoneNumber) {
+    public PromotionGetAvailableByClientRequest withPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }

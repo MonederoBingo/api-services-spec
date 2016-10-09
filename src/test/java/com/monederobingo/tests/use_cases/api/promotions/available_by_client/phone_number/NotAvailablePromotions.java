@@ -19,7 +19,7 @@ public class NotAvailablePromotions extends ApiUseCase
     @Before
     public void setUp(){
 //        PointsAwardingRequest pointsAwardingRequest = new PointsAwardingRequest(getApiUser());
-//        pointsAwardingRequest.setPhoneNumber(phoneNumber);
+//        pointsAwardingRequest.withPhoneNumber(phoneNumber);
 //        pointsAwardingRequest.send();
     }
 
@@ -27,7 +27,7 @@ public class NotAvailablePromotions extends ApiUseCase
     public void test() {
 //        PromotionGetAvailableByClientRequest promotionGetAvailableByClientRequest =
 //                new PromotionGetAvailableByClientRequest(getApiUser());
-//        promotionGetAvailableByClientRequest.setPhoneNumber(phoneNumber);
+//        promotionGetAvailableByClientRequest.withPhoneNumber(phoneNumber);
 //        serviceResult = promotionGetAvailableByClientRequest.send();
 //        runAssertions(serviceResult);
     }

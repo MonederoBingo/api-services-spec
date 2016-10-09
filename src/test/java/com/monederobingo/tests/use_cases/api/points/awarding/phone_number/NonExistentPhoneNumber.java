@@ -18,7 +18,7 @@ public class NonExistentPhoneNumber extends ApiUseCase
     @Test
     public void test() {
 //        serviceResult = new PointsAwardingRequest(getApiUser())
-//                .setPhoneNumber("1234567890")
+//                .withPhoneNumber("1234567890")
 //                .send();
 //        runAssertions(serviceResult);
     }

@@ -11,7 +11,7 @@ import static com.monederobingo.api.client.util.ParserUtil.toServiceResult;
 
 public abstract class ApiRequest {
 
-    private ApiUser apiUser;
+    protected ApiUser apiUser;
     private ResultListener resultListener;
 
     public ApiRequest(ApiUser apiUser, ResultListener resultListener) {
