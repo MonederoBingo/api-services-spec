@@ -22,10 +22,10 @@ public class ServiceResultVerifier implements En {
                 assertFalse(serviceResult.get().isSuccess()));
 
         And("^Response should have companyId$",
-                () -> assertTrue(serviceResult.getFirstArrayObject().has("companyId")));
+                () -> assertTrue(serviceResult.getFirstObjectFromArray().has("companyId")));
 
         And("^Response should have promotionConfigurationId",
-                () -> assertTrue(serviceResult.getFirstArrayObject().has("promotionConfigurationId")));
+                () -> assertTrue(serviceResult.getFirstObjectFromArray().has("promotionConfigurationId")));
 
         this.<DataTable>And("^The user should receive the following messages$", (expectedMessages) -> {
             Map<Language, String> messages = expectedMessages.asMap(Language.class, String.class);

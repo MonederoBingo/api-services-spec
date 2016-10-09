@@ -24,7 +24,7 @@ public class ServiceResultHolder implements ResultListener {
         return serviceResult.getJSONArray();
     }
 
-    public JSONObject getFirstArrayObject() {
+    public JSONObject getFirstObjectFromArray() {
         return serviceResult.getJSONArray().getJSONObject(0);
     }
 }

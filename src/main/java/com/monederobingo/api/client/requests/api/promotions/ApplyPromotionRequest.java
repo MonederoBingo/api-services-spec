@@ -34,12 +34,12 @@ public class ApplyPromotionRequest extends ApiRequest
         return "/api/v1/promotions" ;
     }
 
-    public ApplyPromotionRequest setPhoneNumber(String phoneNumber) {
+    public ApplyPromotionRequest withPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
 
-    public ApplyPromotionRequest setPromotionConfigurationId(long promotionConfigurationId) {
+    public ApplyPromotionRequest withPromotionConfigurationId(long promotionConfigurationId) {
         this.promotionConfigurationId = promotionConfigurationId;
         return this;
     }
