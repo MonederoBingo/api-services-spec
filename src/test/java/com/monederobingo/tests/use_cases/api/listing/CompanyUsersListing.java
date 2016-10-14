@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static java.lang.Long.compare;
+import static java.util.Collections.sort;
 import static org.junit.Assert.*;
 
 public class CompanyUsersListing extends ApiUseCase
@@ -66,12 +68,7 @@ public class CompanyUsersListing extends ApiUseCase
     }
 
     private void sortCompanyUserList(List<CompanyUser> companyUserList) {
-        Collections.sort(companyUserList, new Comparator<CompanyUser>() {
-            @Override
-            public int compare(CompanyUser o1, CompanyUser o2) {
-                return Long.compare(o1.companyUserId, o2.companyUserId);
-            }
-        });
+        sort(companyUserList, (o1, o2) -> compare(o1.companyUserId, o2.companyUserId));
     }
 
     private CompanyUser parseCompanyUser(JSONObject jsonObject) {

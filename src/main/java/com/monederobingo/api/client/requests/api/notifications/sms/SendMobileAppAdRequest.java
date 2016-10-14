@@ -8,18 +8,16 @@ import org.json.JSONObject;
 
 public class SendMobileAppAdRequest extends ApiRequest
 {
-    private long companyId = 0;
     private String phoneNumber = "6661234567";
 
     public SendMobileAppAdRequest(ApiUser apiUser, ResultListener resultListener) {
         super(apiUser, resultListener);
-        companyId = Long.parseLong(apiUser.getCompanyId());
     }
 
     @Override
     public String getRequestBody() {
         return new JSONObject()
-                .put("companyId", companyId)
+                .put("companyId", apiUser.getCompanyId())
                 .put("phoneNumber", phoneNumber)
                 .toString();
     }
@@ -31,10 +29,10 @@ public class SendMobileAppAdRequest extends ApiRequest
 
     @Override
     protected String getUrlPath() {
-        return "/api/v1/notification/" + companyId + "/" + phoneNumber + "/send_promo_sms";
+        return "/api/v1/notification/" + apiUser.getCompanyId() + "/" + phoneNumber + "/send_promo_sms";
     }
 
-    public SendMobileAppAdRequest setPhoneNumber(String phoneNumber) {
+    public SendMobileAppAdRequest withPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
