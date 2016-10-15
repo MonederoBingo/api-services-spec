@@ -2,6 +2,7 @@
 package com.monederobingo.step_definitions;
 
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
+import cucumber.api.PendingException;
 import cucumber.api.java8.En;
 
 public class CompanyRegistration implements En {

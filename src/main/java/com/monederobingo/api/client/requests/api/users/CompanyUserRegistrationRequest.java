@@ -10,17 +10,15 @@ public class CompanyUserRegistrationRequest extends ApiRequest
 {
     private String name = "user1";
     private String email = "user1@gmail.com";
-    private long companyId;
 
     public CompanyUserRegistrationRequest(ApiUser apiUser, ResultListener resultListener) {
         super(apiUser, resultListener);
-        companyId = Long.parseLong(apiUser.getCompanyId());
     }
 
     @Override
     public String getRequestBody() {
         return new JSONObject()
-                .put("companyId", companyId)
+                .put("companyId", apiUser.getCompanyId())
                 .put("name", name)
                 .put("email", email)
                 .toString();
@@ -36,7 +34,7 @@ public class CompanyUserRegistrationRequest extends ApiRequest
         return "/api/v1/company_users/register";
     }
 
-    public CompanyUserRegistrationRequest setName(String name) {
+    public CompanyUserRegistrationRequest withName(String name) {
         this.name = name;
         return this;
     }
@@ -46,7 +44,7 @@ public class CompanyUserRegistrationRequest extends ApiRequest
         return this;
     }
 
-    public CompanyUserRegistrationRequest setEmail(String email) {
+    public CompanyUserRegistrationRequest andEmail(String email) {
         this.email = email;
         return this;
     }

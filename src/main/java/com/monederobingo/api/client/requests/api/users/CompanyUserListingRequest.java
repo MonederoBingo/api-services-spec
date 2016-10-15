@@ -7,11 +7,8 @@ import com.monederobingo.api.client.requests.api.ApiRequest;
 
 public class CompanyUserListingRequest extends ApiRequest
 {
-    private long companyId;
-
     public CompanyUserListingRequest(ApiUser apiUser, ResultListener resultListener) {
         super(apiUser, resultListener);
-        companyId = Long.parseLong(apiUser.getCompanyId());
     }
 
     @Override
@@ -26,6 +23,6 @@ public class CompanyUserListingRequest extends ApiRequest
 
     @Override
     protected String getUrlPath() {
-        return "/api/v1/company_users/" + companyId;
+        return "/api/v1/company_users/" + apiUser.getCompanyId();
     }
 }
