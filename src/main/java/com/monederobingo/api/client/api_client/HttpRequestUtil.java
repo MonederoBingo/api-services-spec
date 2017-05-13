@@ -1,5 +1,7 @@
 package com.monederobingo.api.client.api_client;
 
+import static java.nio.charset.Charset.forName;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -73,7 +75,7 @@ public class HttpRequestUtil {
     private static String getResponse(HttpURLConnection connection) throws IOException {
         InputStream inputStream = connection.getInputStream();
         String response;
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, forName("UTF-8")))) {
             response = readResponse(br);
         }
         return response;
