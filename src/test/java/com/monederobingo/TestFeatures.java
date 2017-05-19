@@ -1,4 +1,3 @@
-
 package com.monederobingo;
 
 import cucumber.api.CucumberOptions;

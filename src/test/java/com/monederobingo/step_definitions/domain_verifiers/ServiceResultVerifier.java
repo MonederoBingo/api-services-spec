@@ -42,7 +42,7 @@ public class ServiceResultVerifier implements En {
                 (String object) -> assertEquals("100.0", serviceResult.get().getObject()));
 
         Then("^The response should have as extra info \"([^\"]*)\"$",
-                (String extraInfo) -> assertEquals(serviceResult.get().getExtraInfo(), extraInfo));
+                (String extraInfo) -> assertEquals(extraInfo, serviceResult.get().getExtraInfo()));
 
         Then("^The response should have (\\d+) rows$",
                 (Integer rows) -> assertEquals(rows.intValue(), serviceResult.getJSONArray().length()));
