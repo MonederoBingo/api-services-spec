@@ -21,10 +21,10 @@ public class CompanyLogin implements En {
                         .andPassword("password"));
 
         Given("^The user should be active$", () ->
-                assertTrue(serviceResult.getJSONObject().getBoolean("isActive")));
+                assertTrue(serviceResult.getJSONObject().getBoolean("active")));
 
         Given("^The user should not be active$", () ->
-                assertFalse(serviceResult.getJSONObject().getBoolean("isActive")));
+                assertFalse(serviceResult.getJSONObject().getBoolean("active")));
 
         And("^The user should not need to change password$", () ->
                 assertFalse(serviceResult.getJSONObject().getBoolean("mustChangePassword")));

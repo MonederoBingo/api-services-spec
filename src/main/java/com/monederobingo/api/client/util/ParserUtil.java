@@ -9,7 +9,7 @@ public class ParserUtil {
         try {
             JSONObject jsonObject = new JSONObject(json);
             boolean success = jsonObject.getBoolean("success");
-            ServiceMessage serviceMessage = parseServiceMessage(jsonObject.getJSONObject("message"));
+            ServiceMessage serviceMessage = parseServiceMessage(jsonObject.getJSONObject("serviceMessage"));
             Object object = "";
             if (jsonObject.has("object")) {
                 object = jsonObject.get("object");
