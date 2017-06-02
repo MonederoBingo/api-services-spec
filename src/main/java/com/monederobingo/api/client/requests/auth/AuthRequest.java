@@ -34,7 +34,9 @@ public abstract class AuthRequest {
         return new HttpRequestData()
                 .setHttpMethod(getHttpMethod())
                 .setBody(getRequestBody())
-                .setUrlPath(getUrlPath() + urlParameters);
+                .setUrlPath(getUrlPath() + urlParameters)
+                .setContentType("application/json")
+                .setApiUrl("http://test.localhost:9090/");
     }
 
     protected abstract String getRequestBody();

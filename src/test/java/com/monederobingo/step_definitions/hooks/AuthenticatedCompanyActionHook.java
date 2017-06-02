@@ -4,6 +4,7 @@ import com.monederobingo.api.client.api_client.ApiUser;
 import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.auth.activation.ActivateCompanyUserRequest;
 import com.monederobingo.api.client.requests.auth.login.CompanyLoginRequest;
+import com.monederobingo.api.client.requests.auth.login.GetTokenRequest;
 import com.monederobingo.api.client.requests.auth.registration.CompanyRegistrationRequest;
 import cucumber.api.java.Before;
 import org.json.JSONObject;
@@ -21,7 +22,14 @@ public class AuthenticatedCompanyActionHook {
     @Before("@authenticated_company_action")
     public final void loginCompanyAndGetApiUser() {
         final JSONObject jsonObject = activateAndLoginUser(registerCompany()).getJSONObject();
-        apiUser.withKeyAndCompanyId(jsonObject.getString("apiKey"), valueOf(jsonObject.getInt("companyId")));
+        JSONObject token = new GetTokenRequest()
+                .withUsername("test@monederobingo.com")
+                .withPassword("Password")
+                .send();
+        apiUser.withKeyAndCompanyIdToken(
+                jsonObject.getString("apiKey"),
+                valueOf(jsonObject.getInt("companyId")),
+                token.getString("access_token"));
     }
 
     private ServiceResult registerCompany() {

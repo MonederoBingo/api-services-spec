@@ -3,8 +3,15 @@ package com.monederobingo.api.client.api_client;
 public class ApiUser {
     private String apiKey;
     private String companyId;
+    private String apiToken;
 
-    String getApiKey() {
+    public void withKeyAndCompanyIdToken(String apiKey, String companyId, String apiToken) {
+        this.apiKey = apiKey;
+        this.companyId = companyId;
+        this.apiToken = apiToken;
+    }
+
+    public String getApiKey() {
         return apiKey;
     }
 
@@ -12,8 +19,8 @@ public class ApiUser {
         return companyId;
     }
 
-    public void withKeyAndCompanyId(String apiKey, String companyId) {
-        this.apiKey = apiKey;
-        this.companyId = companyId;
+    public String getApiToken()
+    {
+        return apiToken;
     }
 }

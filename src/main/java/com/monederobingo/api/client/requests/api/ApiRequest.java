@@ -8,6 +8,7 @@ import com.monederobingo.api.client.model.ServiceResult;
 import com.monederobingo.api.client.requests.ResultListener;
 
 import static com.monederobingo.api.client.util.ParserUtil.toServiceResult;
+import static java.util.Objects.nonNull;
 
 public abstract class ApiRequest {
 
@@ -28,11 +29,18 @@ public abstract class ApiRequest {
     }
 
     private HttpRequestData getHttpRequestData(ApiUser apiUser) {
-        return new HttpRequestData()
+        HttpRequestData httpRequestData = new HttpRequestData()
                 .setHttpMethod(getHttpMethod())
                 .setApiUser(apiUser)
                 .setBody(getRequestBody())
-                .setUrlPath(getUrlPath());
+                .setUrlPath(getUrlPath())
+                .setContentType("application/json")
+                .setApiUrl("http://test.localhost:9090/");
+        if (nonNull(apiUser.getApiToken()) && apiUser.getApiToken().length() > 0)
+        {
+            httpRequestData.setAuthorization("Bearer " + httpRequestData.getApiUser().getApiToken());
+        }
+        return httpRequestData;
     }
 
     public ApiUser getApiUser() {

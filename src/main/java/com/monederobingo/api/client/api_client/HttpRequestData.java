@@ -1,11 +1,13 @@
 package com.monederobingo.api.client.api_client;
 
 public class HttpRequestData {
-    private static final String API_URL = "http://test.localhost:9090/";
+    private String apiUrl;
     private HttpMethod httpMethod = HttpMethod.GET;
     private String body = "{}";
     private String urlPath = "";
     private ApiUser apiUser = new ApiUser();
+    private String contentType;
+    private String authorization;
 
     public HttpMethod getHttpMethod() {
         return httpMethod;
@@ -25,8 +27,14 @@ public class HttpRequestData {
         return this;
     }
 
+    public HttpRequestData setApiUrl(String apiUrl)
+    {
+        this.apiUrl = apiUrl;
+        return this;
+    }
+
     public String getUrlPath() {
-        return API_URL + urlPath;
+        return this.apiUrl + urlPath;
     }
 
     public HttpRequestData setUrlPath(String urlPath) {
@@ -40,6 +48,28 @@ public class HttpRequestData {
 
     public HttpRequestData setApiUser(ApiUser apiUser) {
         this.apiUser = apiUser;
+        return this;
+    }
+
+    public HttpRequestData setContentType(String contentType)
+    {
+        this.contentType = contentType;
+        return this;
+    }
+
+    public String getContentType()
+    {
+        return contentType;
+    }
+
+    public String getAuthorization()
+    {
+        return authorization;
+    }
+
+    public HttpRequestData setAuthorization(String authentication)
+    {
+        this.authorization = authentication;
         return this;
     }
 }
