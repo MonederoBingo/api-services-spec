@@ -32,7 +32,11 @@ public class ServiceResult {
     }
 
     public JSONObject getJSONObject() {
-        String source = ofNullable(object).orElse("");
+        String source = ofNullable(object).orElse("{}");
+        if(source.equals("null"))
+        {
+            source = "{}";
+        }
         return new JSONObject(source);
     }
 
