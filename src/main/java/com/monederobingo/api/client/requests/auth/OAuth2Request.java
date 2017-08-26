@@ -22,7 +22,7 @@ public abstract class OAuth2Request
                 .setUrlPath(getUrlPath())
                 .setContentType("application/x-www-form-urlencoded")
                 .setAuthorization("Basic " + new String(Base64.getEncoder().encode("monederobingo:monederobingosecret".getBytes())))
-                .setApiUrl("http://localhost:9000/");
+                .setApiUrl("http://test.localhost:9000/");
     }
 
     protected abstract String getRequestBody();
